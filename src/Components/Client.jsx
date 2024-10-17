@@ -19,12 +19,12 @@ const LeadDetailsComponent = () => {
             <Typography
               variant="body2"
               color="textSecondary"
-              sx={{ fontSize: 11, ml: '1rem', backgroundColor: 'lightgrey', paddingInline: '0.5rem' }}
+              sx={{ fontSize: 11, ml: '0.5rem', backgroundColor: 'lightgrey', paddingInline: '0.5rem' }}
             >
               Prospect
             </Typography>
           </Box>
-          <Typography variant="body2" sx={{ fontSize: 12, display: 'flex',color:'grey' }}>
+          <Typography variant="body2" sx={{ fontSize: 10.5, display: 'flex',color:'grey',width:"100%" }}>
             +919090808012&nbsp;• &nbsp;Tomcruise2515@mail.com
           </Typography>
         </Box>
