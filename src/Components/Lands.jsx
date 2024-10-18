@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -25,16 +24,8 @@ const properties = [
   'SRM Apartments',
 ];
 
-function getStyles(name, selectedNames, theme) {
-  return {
-    fontWeight: selectedNames.includes(name)
-      ? theme.typography.fontWeightMedium
-      : theme.typography.fontWeightRegular,
-  };
-}
 
 export default function Lands() {
-  const theme = useTheme();
   const [selectedProperties, setSelectedProperties] = React.useState([]);
 
   const handleChange = (event) => {
@@ -77,7 +68,7 @@ export default function Lands() {
             <MenuItem
               key={property}
               value={property}
-              style={getStyles(property, selectedProperties, theme)}
+              style={{fontWeight:'bold',fontSize:'0.875rem'}}
             >
               {property}
             </MenuItem>

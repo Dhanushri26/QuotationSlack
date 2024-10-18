@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Switch, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { BsStars } from "react-icons/bs";
+
 const UtilityData = [
   {
     id: 1,
@@ -34,19 +36,19 @@ const UtilityData = [
 
 export default function AddUtility() {
   const [open, setOpen] = useState(true);
-  const [Utility, setUtility] = useState(UtilityData);
+  const [utility, setUtility] = useState(UtilityData);
 
-  const toggleAmenity = (id) => {
+  const toggleUtility = (id) => {
     setUtility((prev) =>
-      prev.map((amenity) =>
-        amenity.id === id ? { ...amenity, selected: !amenity.selected } : amenity
+      prev.map((util) =>
+        util.id === id ? { ...util, selected: !util.selected } : util
       )
     );
   };
 
-  const totalUtility = Utility.filter((amenity) => amenity.selected).length;
-  const totalPrice = Utility.reduce((total, amenity) => {
-    return amenity.selected ? total + amenity.price : total;
+  const totalUtility = utility.filter((util) => util.selected).length;
+  const totalPrice = utility.reduce((total, util) => {
+    return util.selected ? total + util.price : total;
   }, 0);
 
   const handleClose = () => {
@@ -54,8 +56,8 @@ export default function AddUtility() {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <DialogTitle>
+    <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth sx={{ scrollbarWidth: 'none', msScrollbarWidth: 'none', fontFamily: 'Nunito Sans' }}>
+      <DialogTitle sx={{ borderBottom: '1px solid lightgrey', mb: 2, msScrollbarWidth: 'none', scrollbarWidth: 'none', overflowY: 'scroll' }}>
         Add Utility
         <IconButton
           aria-label="close"
@@ -70,46 +72,49 @@ export default function AddUtility() {
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-      <DialogContent>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h6" color="textSecondary">
+      <DialogContent sx={{ overflowY: 'scroll', msScrollbarWidth: 'none', scrollbarWidth: 'none' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, backgroundColor: '#DBF0F180', padding: '1rem' }}>
+          <BsStars sx={{ mr: '-3rem', pr: '-4rem' }} style={{ color: 'lightblue', fontSize: '1.5rem',padding : '0.5rem',border:'2px solid lightblue',borderRadius:'0.4rem' }} />
+          <Typography variant="h6" color="#6DAFB3" sx={{ ml: -14 }}>
             {totalUtility.toString().padStart(2, '0')} Total Utility
           </Typography>
-          <Typography variant="h6" color="secondary">
+          <Typography variant="h6" color="#6DAFB3">
             ${totalPrice.toFixed(2)}
           </Typography>
         </Box>
 
-        <List>
-          {Utility.map((amenity) => (
-            <ListItem key={amenity.id} sx={{ display: 'flex', alignItems: 'center', padding: '8px 0' }}>
+        <Typography variant="body1" color="textSecondary">
+          Available Utility
+        </Typography>
+        <List sx={{ overflowY: 'scroll', msScrollbarWidth: 'none', scrollbarWidth: 'none' }}>
+          {utility.map((util) => (
+            <ListItem key={util.id} sx={{ display: 'flex', alignItems: 'center', padding: '8px 0', border: '1px solid lightgrey', mb: 1 }}>
               <ListItemAvatar>
-                <Avatar src={amenity.image} alt={amenity.name} />
+                <Avatar src={util.image} alt={util.name} sx={{ borderRadius: '5px', ml: 1 }} />
               </ListItemAvatar>
               <ListItemText
                 primary={
                   <Typography variant="body1" fontWeight="bold">
-                    {amenity.name}
+                    {util.name}
                   </Typography>
                 }
                 secondary={
                   <Typography variant="body2" color="textSecondary">
-                    ${amenity.price.toFixed(2)} - {amenity.date}
+                    ${util.price.toFixed(2)} - {util.date}
                   </Typography>
                 }
               />
               <Switch
                 edge="end"
-                checked={amenity.selected || false}
-                onChange={() => toggleAmenity(amenity.id)}
+                checked={util.selected || false}
+                onChange={() => toggleUtility(util.id)}
               />
             </ListItem>
           ))}
         </List>
       </DialogContent>
-
       <Box sx={{ textAlign: 'center', p: 2 }}>
-        <Button variant="contained" color="primary" onClick={handleClose}>
+        <Button variant="contained" color="primary" onClick={handleClose} sx={{ width: '90%' }}>
           Update & Save
         </Button>
       </Box>
