@@ -151,24 +151,8 @@ export default function PricingTable() {
       <Dialog
         open={Boolean(dialogComponent)}
         onClose={handleDialogClose}
-        sx={{
-          '& .MuiDialog-paper': {
-            height: '80vh',
-            width: '30rem',
-          },
-        }}
       >
-        <DialogTitle>
-          {dialogComponent && dialogComponent.type.name} 
-          <IconButton
-            aria-label="close"
-            sx={{ position: 'absolute', right: 20, top: 13 }}
-            onClick={handleDialogClose}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>{dialogComponent}</DialogContent> 
+       {dialogComponent}
       </Dialog>
     </>
   );

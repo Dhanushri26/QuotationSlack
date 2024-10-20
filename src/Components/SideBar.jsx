@@ -39,6 +39,7 @@ const SideBar = () => {
           mt:'4rem',
           backgroundColor:'#333333',
           color:'lightgray',
+          transition:'all 0.3s ease-in-out',
         },
       }}
     >

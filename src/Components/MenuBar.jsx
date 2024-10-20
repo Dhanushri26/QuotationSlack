@@ -8,12 +8,11 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import icon from '../assets/icon1.png';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 import Badge from '@mui/material/Badge';
 import TextField from '@mui/material/TextField';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
@@ -71,7 +70,7 @@ function MenuBar() {
       </Badge>
     </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip>
               <Box sx={{display:'flex'}}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Bala" src= {Bala} />
@@ -85,7 +84,7 @@ function MenuBar() {
               </Box>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '46px',ml:'20px',color:'grey' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -96,15 +95,19 @@ function MenuBar() {
               transformOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
+                backgroundColor:'grey'
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                </MenuItem>
-              ))}
+              <Box sx={{display:'flex',padding:'1rem' ,backgroundColor:'grey',color:'white'}}>
+              <Avatar alt="Bala" src= {Bala} />
+              <Box sx={{mt:'0.5rem',ml:'0.5rem',width:'8rem',backgroundColor:'grey'}}>
+              <Typography sx={{ textAlign: 'center',fontSize:"1rem",ml:0.5 }}>Bala Ganesh</Typography>
+              <Typography sx={{ textAlign: 'center',fontSize:"1rem",ml:0.5 }}>Super Admin</Typography>
+              </Box>
+              </Box>
+              
             </Menu>
           </Box>
         </Toolbar>

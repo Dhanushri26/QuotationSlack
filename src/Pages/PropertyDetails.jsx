@@ -14,7 +14,9 @@ const PropertyDetails = () => {
         maxWidth: 365,
         borderRadius: 2, 
         boxShadow:'none',
-        height:'60vh',
+        height:'100vh',
+        mt:-1.5,
+        pt:-10
       }}
     >
       <Box
@@ -26,14 +28,15 @@ const PropertyDetails = () => {
           borderTopRightRadius: 2,
         }}
       >
+        <Box sx={{ display: 'flex',width:'32rem' }}>
         <CardMedia
           component="img"
           alt="Property Image 1"
           height="150"
-          width="50"
-          image="https://via.placeholder.com/150" 
+          image="https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG91c2V8ZW58MHx8MHx8fDA%3D" 
           sx={{ flex: 1, marginRight: 1, borderRadius: 1 }} 
         />
+        </Box>
         <Box display="flex" flexDirection="column" sx={{ padding: 1 }}>
           <Grid container spacing={1}>
             <Grid item xs={6}>
@@ -51,7 +54,7 @@ const PropertyDetails = () => {
                 component="img"
                 alt="Property Image 2"
                 height="70"
-                image="https://via.placeholder.com/150" 
+                image="https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8fDA%3D" 
                 sx={{ borderRadius: 1 }} 
               />
             </Grid>
@@ -60,7 +63,7 @@ const PropertyDetails = () => {
                 component="img"
                 alt="Property Image 3"
                 height="70"
-                image="https://via.placeholder.com/150" 
+                image="https://images.unsplash.com/photo-1444676632488-26a136c45b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fHww" 
                 sx={{ borderRadius: 1 }} 
               />
             </Grid>
@@ -69,7 +72,7 @@ const PropertyDetails = () => {
                 component="img"
                 alt="Property Image 4"
                 height="70"
-                image="https://via.placeholder.com/150" 
+                image="https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdXNlfGVufDB8fDB8fHww" 
                 sx={{ borderRadius: 1 }} 
               />
             </Grid>

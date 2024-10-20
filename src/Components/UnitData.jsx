@@ -179,7 +179,7 @@ export default function RealEstateCard() {
         </MenuItem>
       </Menu>
 
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md" sx={{mt:0}}>
         {currentComponent} 
       </Dialog>
     </Box>
