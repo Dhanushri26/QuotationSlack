@@ -1,34 +1,53 @@
+import  { useState } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Box from '@mui/material/Box';
 import RealEstateCard from './UnitData'; 
-import { Typography } from '@mui/material';
+import { Typography, Dialog, } from '@mui/material';
 import { RiDeleteBinLine } from "react-icons/ri";
-
+import Unit from '../Pages/Unit';
 export default function TitlebarBelowImageList() {
+  const [open, setOpen] = useState(false);  
+  const [selectedItem, setSelectedItem] = useState(null);  
+
+  // Open dialog and set the clicked item
+  const handleClickOpen = (item) => {
+    setSelectedItem(item);
+    setOpen(true);
+  };
+
+  // Close dialog
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Box sx={{ width: '41%', height: 400, overflowY: 'auto', overflowX: 'hidden',mr:0.5,msScrollWidth:'none',scrollbarWidth:'none',fontFamily:'Nunito Sans'}}>
+    <Box sx={{ width: '41%', height: 400, overflowY: 'auto', overflowX: 'hidden', mr: 0.5, msScrollWidth: 'none', scrollbarWidth: 'none', fontFamily: 'Nunito Sans' }}>
       <Typography sx={styles.title}>Unit Details</Typography>
-    <Box sx={styles.container}>
-      
-      <ImageList sx={styles.imageListContainer} cols={2} gap={20}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img} sx={styles.imageListItem}>
-            <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              alt={item.title}
-              loading="lazy"
-              style={styles.image}
-              
-            />
-            <RiDeleteBinLine style={styles.deleteIcon}/>
-            <Box sx={{ marginTop: '1rem' }}>
-              <RealEstateCard />
-            </Box>
-          </ImageListItem>
-        ))}
-      </ImageList>
-    </Box>
+      <Box sx={styles.container}>
+        <ImageList sx={styles.imageListContainer} cols={2} gap={20}>
+          {itemData.map((item) => (
+            <ImageListItem key={item.img} sx={styles.imageListItem}>
+              <img onClick={() => handleClickOpen(item)}
+                src={`${item.img}?w=248&fit=crop&auto=format`}
+                alt={item.title}
+                loading="lazy"
+                style={styles.image}
+              />
+              <RiDeleteBinLine style={styles.deleteIcon} />
+              <Box sx={{ marginTop: '1rem' }}>
+                <RealEstateCard />
+              </Box>
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </Box>
+
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+       
+
+          <Unit item={selectedItem} />
+      </Dialog>
     </Box>
   );
 }
@@ -59,14 +78,12 @@ const styles = {
     alignItems: 'center',
     padding: '2rem',
     fontFamily: 'Nunito Sans',
-    ml:-2,
-    mt:"-1.5rem"
-
-
+    ml: -2,
+    mt: '-1.5rem',
   },
   imageListContainer: {
     width: '100%',
-    maxWidth: 600, 
+    maxWidth: 600,
     scrollbarWidth: 'none',
     mscrollbarWidth: 'none',
   },
@@ -83,19 +100,20 @@ const styles = {
     '&:hover': {
       transform: 'scale(1.05)',
     },
+    cursor: 'pointer', // Makes it clear the image is clickable
   },
   image: {
     width: '12rem',
     height: '6rem',
     borderRadius: '8px',
-    position:'relative',
+    position: 'relative',
   },
   title: {
     fontSize: '1rem',
     fontWeight: 'bold',
     marginTop: '1rem',
-    ml:'1rem',
-    color:'grey'
+    ml: '1rem',
+    color: 'grey',
   },
   deleteIcon: {
     position: 'absolute',
@@ -104,10 +122,10 @@ const styles = {
     color: 'red',
     cursor: 'pointer',
     backgroundColor: '#F5F7FA',
-    height:'1rem',
-    width:'1rem',
-    padding:'0.4rem',
-    borderRadius:'50%',
-    fontSize:'1.5rem',
+    height: '1rem',
+    width: '1rem',
+    padding: '0.4rem',
+    borderRadius: '50%',
+    fontSize: '1.5rem',
   },
 };
