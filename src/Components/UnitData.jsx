@@ -14,7 +14,7 @@ import PricingTable from '../Pages/PricingTable'; // import PricingTable
 import AddAmenities from '../Pages/AddAmenities'; // import AddAmenities component
 import AddUtilities from '../Pages/AddUtility'; // import AddUtilities component
 import RemoveComponent from '../Pages/RemoveComponent';
-import Unit from '../Pages/Unit';
+import AddDiscount from '../Pages/AddDiscount';
 const CustomIconBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
@@ -53,7 +53,7 @@ export default function RealEstateCard() {
     } else if (option === 'Remove Component') {
       setCurrentComponent(<RemoveComponent />);
     } else if (option === 'Add Discount') {
-       setCurrentComponent(<Unit/>)
+       setCurrentComponent(<AddDiscount/>)
     }
     
     handleClickOpen(); 

@@ -13,8 +13,15 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { useState } from 'react';
 import PrimaryComponent from '../Components/PrimaryComponent'; 
-import SecondaryComponent from '../Components/PrimaryComponent'; 
 import { Tooltip } from '@mui/material';
+import Secondary from '../Components/Secondary';
+import OneTimeChange from '../Components/OneTimeChange';
+import Refundables from '../Components/Refundables';
+import InventoryItem from '../Components/InventoryItem';
+import ParkingSlot from '../Components/ParkingSlot';
+import {
+  withStyles
+} from "@material-ui/core/styles";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -57,6 +64,16 @@ export default function PricingTable() {
 
   const formatIndex = (index) => (index < 9 ? `0${index + 1}` : `${index + 1}`);
 
+  const TextOnlyTooltip = withStyles({
+    tooltip: {
+      color: "black",
+      backgroundColor: "white",
+      border:'1px solid lightgrey',
+      width:'15rem',
+      fontFamily:'Nunito Sans'
+    }
+  })(Tooltip);
+
   return (
     <>
       <Dialog
@@ -80,7 +97,7 @@ export default function PricingTable() {
               top: 13,
               color: (theme) => theme.palette.grey[500],
             }}
-            onClick={handleClose} // Close PricingTable dialog
+            onClick={handleClose} 
           >
             <CloseIcon />
           </IconButton>
@@ -103,8 +120,16 @@ export default function PricingTable() {
                   item.message === 'Primary'
                     ? () => handleDialogOpen(<PrimaryComponent />) 
                     : item.message === 'Secondary'
-                    ? () => handleDialogOpen(<SecondaryComponent />) 
-                    : undefined
+                    ? () => handleDialogOpen(<Secondary />) 
+                    : item.message === 'One time Charges'
+                    ? () => handleDialogOpen(<OneTimeChange/>)
+                    : item.message === 'Refundables'
+                    ? () => handleDialogOpen(<Refundables/>)
+                    : item.message === 'Inventory Item'
+                    ? () => handleDialogOpen(<InventoryItem/>)
+                    : item.message === 'Parking Slot'
+                    ? () => handleDialogOpen(<ParkingSlot/>)
+                    : null
                 }
               >
                 <Stack spacing={2} direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -124,21 +149,25 @@ export default function PricingTable() {
                     </Typography>
                   </Stack>
                   <Stack direction="row" spacing={1} sx={{ color: 'lightgrey' }}>
-                  <Tooltip
-            title="Base rent or Monthly rent you can have only one primary pricing table per property"
-            arrow
-            placement="top"
-            sx={{
-              "& .MuiTooltip-tooltip": {
-                backgroundColor: "white",
-                color: "black",
-                border: "1px solid lightgrey",
-                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
-              },
-            }}
-          >
-            <InfoOutlinedIcon sx={{ cursor: 'pointer', color: 'lightgrey' }} />
-          </Tooltip>
+                  <TextOnlyTooltip
+  title="Base rent or Monthly rent you can have only one primary pricing table per property"
+  
+  placement="top"
+  sx={{
+    "& .MuiTooltip-tooltip": {
+      backgroundColor: "#ffffff",      
+      color: "grey",                 
+      border: "1px solid lightgrey",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)", 
+    },
+    "& .MuiTooltip-arrow": {
+      color: "white", 
+    },
+  }}
+>
+  <InfoOutlinedIcon sx={{ cursor: 'pointer', color: 'lightgrey' }} />
+</TextOnlyTooltip>
+
                     <ArrowForwardIosOutlinedIcon />
                   </Stack>
                 </Stack>

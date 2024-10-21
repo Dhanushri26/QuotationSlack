@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, IconButton, TextField, Button, ToggleButtonGroup, ToggleButton, Box, Typography,InputAdornment,MenuItem, LinearProgress,Tooltip} from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, IconButton, TextField, Button, ToggleButtonGroup, ToggleButton, Box, Typography,InputAdornment,MenuItem,Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import  { linearProgressClasses } from '@mui/material/LinearProgress';
-import { styled } from '@mui/material/styles';
-import { withStyles } from '@mui/styles';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { withStyles } from '@mui/styles';
 
-export default function PrimaryComponent() {
+export default function Secondary() {
   const [open, setOpen] = useState(true);
   const [revenueType, setRevenueType] = useState('Lease');
   const [componentBasedOn, setComponentBasedOn] = useState('Amount');
@@ -15,24 +13,6 @@ export default function PrimaryComponent() {
   const handleClose = () => setOpen(false);
   const handleRevenueChange = (event, newType) => setRevenueType(newType);
   const handleComponentBasedChange = (event, newValue) => setComponentBasedOn(newValue);
-
-  const BorderLinearProgress = styled(LinearProgress)(({ theme, color }) => ({
-    height: 5,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[200],
-      ...theme.applyStyles('dark', {
-        backgroundColor: theme.palette.grey[800],
-      }),
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 5,
-      backgroundColor: color || '#1a90ff', 
-      ...theme.applyStyles('dark', {
-        backgroundColor: color || '#308fe8', 
-      }),
-    },
-  }));
   const TextOnlyTooltip = withStyles({
     tooltip: {
       color: 'grey',
@@ -43,18 +23,16 @@ export default function PrimaryComponent() {
     },
   })(Tooltip);
   
-
   return (
     <Dialog
-      open={open}
-      onClose={handleClose}
-      
+      open={open} onClose={handleClose}
       PaperProps={{
         sx: {
           borderRadius: '12px',
           padding: '1.5rem',
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
           overflow: 'hidden',
+          fontFamily: 'Nunito Sans',
         },
       }}
       msScrollbarWidth="none"
@@ -71,6 +49,7 @@ export default function PrimaryComponent() {
         borderBottom: '1px solid #e0e0e0',
         marginBottom: '0.75rem',
         marginTop:'-1.5rem',
+        marginLeft:'-0.5rem'
       }}>
         Pricing Table
         <IconButton onClick={handleClose}>
@@ -86,8 +65,8 @@ export default function PrimaryComponent() {
             fullWidth
             variant="contained"
             sx={{
-              backgroundColor: '#FEEAEA80',
-              color: '#B3776D',
+              backgroundColor: '#0000000D',
+              color: '#6d7cb3',
               textTransform: 'none',
               fontWeight: '500',
               borderRadius: '8px',
@@ -101,8 +80,8 @@ export default function PrimaryComponent() {
               width:'36rem'
             }}
           >
-            Primary Pricing Component
-            <IconButton size="small" sx={{ color: '#B3776D' }}>
+            Secondary Component
+            <IconButton size="small" sx={{ color: '#6d7cb3' }}>
             <TextOnlyTooltip title="Base rent or Monthly rent you can have only one primary pricing table per property">
       <div>
         <InfoOutlinedIcon sx={{ color: 'lightgray' }} />
@@ -113,7 +92,7 @@ export default function PrimaryComponent() {
 
 <Box display={'flex'}>
           <Box sx={{ marginBottom: '1.5rem',ml:'-1rem', flex:2 }}>
-            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 ,ml:'0.5rem',color:'grey',fontFamily:'Nunito Sans'}}>
               Revenue Type
             </Typography>
             <ToggleButtonGroup
@@ -139,81 +118,142 @@ export default function PrimaryComponent() {
                 },
               }}
             >
-              <ToggleButton value="Lease" sx={{color:'#1976d2'}}>Lease</ToggleButton>
+              <ToggleButton value="Lease" sx={{ 
+      color: '#1976d2',
+      '&.Mui-selected': {
+        backgroundColor: '#1976d2', 
+        color: '#fff',
+      } 
+    }}>Lease</ToggleButton>
               <ToggleButton value="Sales">Sales</ToggleButton>
               <ToggleButton value="Manage">Manage</ToggleButton>
+              <ToggleButton value="Other">Stay</ToggleButton>
             </ToggleButtonGroup>
           </Box>
 
-          <Box sx={{ marginBottom: '1.5rem',ml:'1.5rem' ,flex:2}}>
-            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500, color:'black' }}>
-              Pricing Component
-            </Typography>
-            <TextField
-  variant="outlined"
-  size="small"
-  fullWidth
-  placeholder="Pricing Component"
-  InputProps={{
-    endAdornment: (
-      <InputAdornment position="end">
-        <KeyboardArrowDownIcon />
-      </InputAdornment>
-    ),
-    sx: {
-      '& ::placeholder': {
-        fontWeight: 'bold',  
-        color:'black',
-        letterSpacing:'-0.4px',
-      },
-    },
-  }}
-  sx={{ backgroundColor: '#f9f9f9', borderRadius: '8px',color:'black' }}
-/>
+          
           </Box>
-          </Box>
-          <Box sx={{display:'flex',flex:2}}>
-          <Box sx={{ marginBottom: '1.5rem',ml:'-1rem',width:'50%' }}>
-            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 }}>
-              Tax Group For Pricing Component
-            </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+  <Box sx={{ marginBottom: '1.5rem', ml: '-1rem', width: { xs: '100%', md: '45%' } }}>
+    <Typography
+      variant="body2"
+      sx={{ marginBottom: '0.5rem', fontWeight: 500, color:'grey',fontFamily:'Nunito Sans' }}
+    >
+      Pricing Component
+    </Typography>
 
-<TextField
-  variant="outlined"
-  size="small"
-  fullWidth
-  width='15rem'
-  select
-  value="GST"
-  placeholder="Select Tax Group"
-  InputProps={{
-    endAdornment: (
-      <InputAdornment position="end">
-        <KeyboardArrowDownIcon />
-      </InputAdornment>
-    ),
-    disableUnderline: true, 
-  }}
-  sx={{ 
-    backgroundColor: '#f9f9f9', 
-    borderRadius: '8px',
-    '& .MuiSelect-icon': {
-      display: 'none', 
-    },
-    '& ::placeholder': {
-      fontWeight: 'bold',  
-      color: 'black',      
-    },
-  }}
->
-  <MenuItem value="GST">GST</MenuItem>
-  <MenuItem value="VAT">VAT</MenuItem>
-  <MenuItem value="Sales Tax">Sales Tax</MenuItem>
-</TextField>
-          </Box>
+    <TextField
+      variant="outlined"
+      size="small"
+      fullWidth
+      select
+      value="Primary Component"
+      placeholder="Select Pricing Component"
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <KeyboardArrowDownIcon />
+          </InputAdornment>
+        ),
+        disableUnderline: true,
+      }}
+      sx={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        '& .MuiSelect-icon': {
+          display: 'none',
+        },
+        '& ::placeholder': {
+          fontWeight: 'bold',
+          color: 'black',
+          fontFamily:'Nunito Sans',
+          fontSize:'0.5rem'
+        },
+      }}
+    >
+      <MenuItem value="Primary Component">Primary Component</MenuItem>
+      <MenuItem value="Secondary Component">Secondary</MenuItem>
+      <MenuItem value="Tertiary">Tertiary</MenuItem>
+    </TextField>
+  </Box>
 
-          <Box sx={{ marginBottom: '1.5rem',ml:"1rem" }}>
-            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 }}>
+  {/* Second Box for Tax Group */}
+  <Box sx={{ marginBottom: '1.5rem', ml: '-1rem', width: { xs: '100%', md: '45%' } }}>
+    <Typography
+      variant="body2"
+      sx={{ marginBottom: '0.5rem', fontWeight: 500, color:'grey',fontFamily:'Nunito Sans' }}
+    >
+      Tax Group For Pricing Component
+    </Typography>
+
+    <TextField
+      variant="outlined"
+      size="small"
+      fullWidth
+      select
+      value="GST"
+      placeholder="Select Tax Group"
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <KeyboardArrowDownIcon />
+          </InputAdornment>
+        ),
+        disableUnderline: true,
+      }}
+      sx={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        '& .MuiSelect-icon': {
+          display: 'none',
+        },
+        '& ::placeholder': {
+          fontWeight: 'bold',
+          color: 'black',
+          fontFamily:'Nunito Sans',
+        },
+      }}
+    >
+      <MenuItem value="GST">GST</MenuItem>
+      <MenuItem value="VAT">VAT</MenuItem>
+      <MenuItem value="Sales Tax">Sales Tax</MenuItem>
+    </TextField>
+  </Box>
+</Box>
+<Box sx={{display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
+<Box sx={{ marginBottom: '1.5rem',ml:"-0.5rem" }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 ,color:'grey',fontFamily:'Nunito Sans'}}>
+              Chargeable
+            </Typography>
+            <ToggleButtonGroup
+              value={componentBasedOn}
+              exclusive
+              onChange={handleComponentBasedChange}
+              sx={{
+                width: '100%',
+                '& .MuiToggleButton-root': {
+                  borderRadius: '5x',
+                  padding: '7px 15px',
+                  textTransform: 'none',
+                  fontWeight: '500',
+                  borderColor: '#e0e0e0',
+                  flex: 1,
+                  marginInline:'0px',
+                  marginRight:'8px',
+
+                },
+                '& .Mui-selected': {
+                  backgroundColor: '#1976d2',
+                  color: '#fff',
+                },
+              }}
+            >
+              <ToggleButton value="Amount" >Yes</ToggleButton>
+              <ToggleButton value="UOM">No</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+ <Box sx={{ marginBottom: '1.5rem',mr:"2rem" }}>
+            <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500,color:'grey',fontFamily:'Nunito Sans' }}>
               Component Based On
             </Typography>
             <ToggleButtonGroup
@@ -223,8 +263,8 @@ export default function PrimaryComponent() {
               sx={{
                 width: '100%',
                 '& .MuiToggleButton-root': {
-                  borderRadius: '8px',
-                  padding: '7px 6px',
+                  borderRadius: '5px',
+                  padding: '7px 15px',
                   textTransform: 'none',
                   fontWeight: '500',
                   borderColor: '#e0e0e0',
@@ -240,76 +280,38 @@ export default function PrimaryComponent() {
             >
               <ToggleButton value="Amount">Amount</ToggleButton>
               <ToggleButton value="UOM">UOM</ToggleButton>
+              <ToggleButton value="UOM">%</ToggleButton>
+
             </ToggleButtonGroup>
           </Box>
-</Box>
+
+          </Box>
           <Box sx={{ alignItems: 'center', marginBottom: '2rem' }}>
-            <Typography variant="body2" sx={{ flexGrow: 1, fontWeight: 500,ml:'-1rem',mb:'4px' }}>
+            <Typography variant="body2" sx={{ flexGrow: 1, fontWeight: 500,ml:'-1rem',mb:'4px',color:'grey',fontFamily:'Nunito Sans' }}>
               UOM Value
             </Typography>
             
 <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '2rem',width:'120rem',ml:'-1rem' ,flex:1 ,}}>
   <TextField
     variant="outlined"
-    size="small" width="40rem" fullWidth    value="200"
+    size="small" width="40rem" fullWidth    value="200" 
     InputProps={{
       endAdornment: (
         <InputAdornment position="end">
           <Typography variant="body2" sx={{ marginLeft: '0.5rem' }}>
-            SAR / Total
+            $/Monthly
           </Typography>
         </InputAdornment>
       ),
     }}
-    sx={{ width: '30%', backgroundColor: '#f9f9f9', borderRadius: '8px' }}
+    sx={{ width: '30%', backgroundColor: 'white', borderRadius: '8px' }}
   />
 </Box>
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem',ml:'-1rem' }}>
-  <Box sx={{ display: 'flex', flexDirection: 'column', width: '30%', borderRadius: '8px', padding: '0.5rem' }}>
-    <Typography variant="body2" sx={{ fontWeight: 500 }}>Maximum</Typography>
-    <Box sx={{ width: '100%' }}>
-    <BorderLinearProgress variant="determinate" value={100} color='red' />
-
-    </Box>
-    <TextField 
-      value="$ 190" 
-      size="small" 
-      sx={{ marginTop: '0.5rem', backgroundColor: '#fff', borderRadius: '8px' }} 
-    />
-     <Typography variant="body2" sx={{ fontWeight: 500,fontSize:10 ,mt:'5px',color:'grey'}}>Sq.Yard/Monthly</Typography>
-
-  </Box>
-  
-  <Box sx={{ display: 'flex', flexDirection: 'column', width: '30%', borderRadius: '8px', padding: '0.5rem' }}>
-    <Typography variant="body2" sx={{ fontWeight: 500 }}>Recommended</Typography>
-    <BorderLinearProgress variant="determinate" value={70} color='lightgreen' />
-
-    <TextField 
-      value="$ 120" 
-      size="small" 
-      sx={{ marginTop: '0.5rem', backgroundColor: '#fff', borderRadius: '8px' }} 
-    />
-     <Typography variant="body2" sx={{ fontWeight: 500,fontSize:10 ,mt:'5px',color:'grey'}}>Sq.Yard/Monthly</Typography>
-
-  </Box>
-
-  <Box sx={{ display: 'flex', flexDirection: 'column', width: '30%', borderRadius: '8px', padding: '0.5rem' }}>
-    <Typography variant="body2" sx={{ fontWeight: 500 }}>Minimum</Typography>
-    <BorderLinearProgress variant="determinate" value={40} color='orange' />
-
-    <TextField 
-      value="$ 100" 
-      size="small" 
-      sx={{ marginTop: '0.5rem', backgroundColor: '#fff', borderRadius: '8px' }} 
-    />
-        <Typography variant="body2" sx={{ fontWeight: 500,fontSize:10 ,mt:'5px',color:'grey'}}>Sq.Yard/Monthly</Typography>
-
-  </Box>
-</Box>
+          
 
 
-<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }}>Back</Button>
             <Button
               variant="contained"
