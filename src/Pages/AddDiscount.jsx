@@ -20,7 +20,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
 const AddDiscount = () => {
   const [open, setOpen] = useState(true); 
-  const [selectedValue, setSelectedValue] = useState(""); // State for Select value
+  const [selectedValue, setSelectedValue] = useState("");
 
 
   const handleClose = () => {
@@ -42,7 +42,7 @@ const AddDiscount = () => {
   }));
 
   const handleChange = (event) => {
-    setSelectedValue(event.target.value); // Update state with selected value
+    setSelectedValue(event.target.value); 
   };
 
 
@@ -88,7 +88,7 @@ const AddDiscount = () => {
       sx={{ height: '1rem', width: '3.4rem' }} 
       onOpen={handleOpen}
       onClose={handleClose}
-      endAdornment={ // Custom adornment for icons
+      endAdornment={ 
         open ? (
           <KeyboardArrowUpIcon sx={{ ml: -2, position: 'absolute', right: 0 }} />
         ) : (

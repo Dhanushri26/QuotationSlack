@@ -84,7 +84,7 @@ const PropertyDetails = () => {
         <Typography gutterBottom variant="h5" component="div" color="grey">
           Jumeirah Estate
         </Typography>
-        <Typography  backgroundColor="lightgrey" sx={{ml:1,p:0.5,pb:-3,height:'0.7rem',fontSize:'0.6rem',mt:1}}>
+        <Typography  backgroundColor="lightgrey" sx={{ml:1,p:0.5,pb:-3,height:'0.7rem',fontSize:'0.6rem',mt:1,borderRadius:1.5}}>
           UNIT-1458
         </Typography>
         </Box>

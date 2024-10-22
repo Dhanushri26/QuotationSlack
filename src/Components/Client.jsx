@@ -19,7 +19,7 @@ const LeadDetailsComponent = () => {
             <Typography
               variant="body2"
               color="textSecondary"
-              sx={{ fontSize: 11, ml: '0.5rem', backgroundColor: 'lightgrey', paddingInline: '0.5rem' }}
+              sx={{ fontSize: 11, ml: '0.5rem', backgroundColor: 'lightgrey', paddingInline: '0.5rem',borderRadius:'0.12rem' }}
             >
               Prospect
             </Typography>
