@@ -32,6 +32,7 @@ const SideBar = () => {
       variant="permanent"
       sx={{
         width: open ? 200 : 60,
+        zIndex: 1,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
           width: open ? 200 : 60,
@@ -40,6 +41,7 @@ const SideBar = () => {
           backgroundColor:'#333333',
           color:'lightgray',
           transition:'all 0.3s ease-in-out',
+          zIndex:1,
         },
       }}
     >

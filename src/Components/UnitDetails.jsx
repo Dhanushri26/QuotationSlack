@@ -3,7 +3,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Box from '@mui/material/Box';
 import RealEstateCard from './UnitData'; 
-import { Typography, Dialog, } from '@mui/material';
+import { Dialog, Typography } from '@mui/material';
 import { RiDeleteBinLine } from "react-icons/ri";
 import Unit from '../Pages/Unit';
 export default function TitlebarBelowImageList() {
@@ -44,8 +44,6 @@ export default function TitlebarBelowImageList() {
       </Box>
 
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-       
-
           <Unit item={selectedItem} />
       </Dialog>
     </Box>

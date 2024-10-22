@@ -177,12 +177,12 @@ export default function PricingTable() {
         </DialogContent>
       </Dialog>
 
-      <Dialog
+      <Box
         open={Boolean(dialogComponent)}
         onClose={handleDialogClose}
       >
        {dialogComponent}
-      </Dialog>
+      </Box>
     </>
   );
 }

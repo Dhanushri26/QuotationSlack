@@ -7,7 +7,7 @@ import Link from '@mui/material/Link';
 import LocalHotelOutlinedIcon from '@mui/icons-material/LocalHotelOutlined';
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import Dialog from '@mui/material/Dialog';
+// import Dialog from '@mui/material/Dialog';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PricingTable from '../Pages/PricingTable'; // import PricingTable
@@ -179,9 +179,9 @@ export default function RealEstateCard() {
         </MenuItem>
       </Menu>
 
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md" sx={{mt:0}}>
+      <Box open={open} onClose={handleClose} fullWidth maxWidth="md" sx={{mt:0}}>
         {currentComponent} 
-      </Dialog>
+      </Box>
     </Box>
   );
 }

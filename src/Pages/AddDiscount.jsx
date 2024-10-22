@@ -72,31 +72,31 @@ const AddDiscount = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px' }}>
         <Typography style={{ fontSize: '12px',fontFamily:'Nunito Sans',color:'grey' }}>Discount</Typography> 
         <div style={{ display: 'flex', gap: '8px' }}> 
-          <button style={{ fontSize: '10px',fontFamily:'Nunito Sans',color:'grey',backgroundColor:'white',border:'1px solid lightgrey',borderRadius:'5px',padding:'2px 8px' }}>100,000</button> 
+          <button style={{ fontSize: '10px',fontFamily:'Nunito Sans',color:'grey',backgroundColor:'white',border:'1px solid lightgrey',borderRadius:'5px',padding:'4px 8px', }}>100,000</button> 
           <Select
+          style={{ fontSize: '10px',fontFamily:'Nunito Sans',color:'grey',backgroundColor:'white',border:'1px solid lightgrey',borderRadius:'5px',padding:'-1px 8px' }}
       labelId="custom-select-label"
       value={selectedValue} 
       onChange={handleChange} 
       displayEmpty
       IconComponent={null} 
-      input={<CustomInput />} 
+      input={<CustomInput sx={{paddingRight:0}} />} 
       renderValue={(value) => (
-        <span style={{ fontWeight: 'bold', color: 'black' }}>
+        <span style={{ fontWeight: 'bold', color: 'black',pr:'-2rem'}}>
           {value ? value : 'AED'} 
         </span>
       )}
-      sx={{ height: '1rem', width: '3.4rem' }} 
+      sx={{ height: '0.5rem', width: '3.5rem',padding:0,margin:0,maxWidth:'60%',mt:1,}} 
       onOpen={handleOpen}
       onClose={handleClose}
       endAdornment={ 
         open ? (
-          <KeyboardArrowUpIcon sx={{ ml: -2, position: 'absolute', right: 0 }} />
+          <KeyboardArrowUpIcon sx={{ ml: -4, position: 'absolute', right: 0, }} />
         ) : (
-          <KeyboardArrowDownIcon sx={{ ml: -2, position: 'absolute', right: 0 }} />
+          <KeyboardArrowDownIcon sx={{ ml: -4, position: 'absolute', right: 0 }} />
         )
       }
     >
-      <MenuItem value="" disabled></MenuItem>
       <MenuItem value="AED" sx={{ fontWeight: 'bold',fontSize:"0.8rem" }}>AED</MenuItem> 
       <MenuItem value="$100,000" sx={{ fontWeight: 'bold',fontSize:"0.8rem" }}>$100,000</MenuItem>
     </Select>

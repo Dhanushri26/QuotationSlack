@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Switch, Button, Radio, FormControlLabel,} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { MdHouseboat } from "react-icons/md";
 import { styled } from '@mui/material/styles';
+import { MdOutlineHouseboat } from "react-icons/md";
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -155,8 +155,8 @@ export default function AddAmenities() {
         </IconButton>
       </DialogTitle>
       <DialogContent sx={{msScrollbarWidth:'none',scrollbarWidth:'none'}}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 , backgroundColor:'#f9c6c6',padding :'8px 10px',borderRadius:'0.32rem'}}>
-          <MdHouseboat style={{ color: "red", fontSize: "1.5rem" }} />
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 , backgroundColor:'#9426262E',padding :'8px 10px',borderRadius:'0.32rem'}}>
+          <MdOutlineHouseboat style={{ color: "red", fontSize: "1.5rem" }} />
           <Typography variant="h6" color="red" sx={{ml:-14}} >
             {totalAmenities.toString().padStart(2, '0')} Total Amenities
           </Typography>
