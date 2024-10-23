@@ -65,6 +65,7 @@ export default function InventoryItem() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width: "30rem",
         },
       }}
       msScrollbarWidth="none"
@@ -112,14 +113,15 @@ export default function InventoryItem() {
               justifyContent: "space-between",
               padding: "0.75rem 1rem",
               marginBottom: "2rem",
-              ml: "-1rem",
+              ml: "-1.5rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "29rem",
               boxShadow: "none",
               "&:hover": {
                 boxShadow: "none",
               },
+              mb:1
             }}
           >
             Inventory Item Component
@@ -220,7 +222,6 @@ export default function InventoryItem() {
               <TextField
                 variant="outlined"
                 size="small"
-                fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
@@ -268,7 +269,6 @@ export default function InventoryItem() {
               </TextField>
             </Box>
 
-            {/* Second Box for Tax Group */}
             <Box
               sx={{
                 marginBottom: "1.5rem",
@@ -283,6 +283,8 @@ export default function InventoryItem() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  width:'20rem',
+                  fontSize:'0.8rem'
                 }}
               >
                 Tax Group For Pricing Component
@@ -484,6 +486,7 @@ export default function InventoryItem() {
                 ml: -1,
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height: "2.5rem",
               }}
               onClick={handleClose}
             >
@@ -493,10 +496,11 @@ export default function InventoryItem() {
               variant="contained"
               color="primary"
               sx={{
-                width: "48%",
+                width: "%",
                 borderRadius: "3px",
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height: "2.5rem",
               }}
             >
               Create Pricing Component

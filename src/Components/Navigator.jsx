@@ -81,11 +81,11 @@ export default function Navigator() {
     <>
       <Stack
         spacing={2}
-        sx={{ width: "96%", ml: "-1rem", borderBottom: "1px solid #f6f6f6" }}
+        sx={{ width: "auto", ml: "-1rem", borderBottom: "1px solid #f6f6f6",backgroundColor:'white',mr:'3.5vw' }}
       >
         <Breadcrumbs
           sx={{
-            width: "100%",
+            width: "auto",
             backgroundColor: "white",
             height: "2.5rem",
             color: "blue",

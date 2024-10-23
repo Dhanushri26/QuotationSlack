@@ -63,6 +63,7 @@ export default function OneTimeChange() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width: "30rem",
         },
       }}
       msScrollbarWidth="none"
@@ -115,10 +116,11 @@ export default function OneTimeChange() {
               ml: "-1rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "29rem",
               boxShadow: "none",
               fontFamily: "Nunito Sans",
               fontSize: "1rem",
+              mb:1,
               "&:hover": {
                 transform: "none",
                 boxShadow: "none",
@@ -227,7 +229,7 @@ export default function OneTimeChange() {
               <TextField
                 variant="outlined"
                 size="small"
-                fullWidth
+                // fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
@@ -289,6 +291,8 @@ export default function OneTimeChange() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  width: "20rem",
+                fontSize: "0.8rem",
                 }}
               >
                 Tax Group For Pricing Component
@@ -487,9 +491,14 @@ export default function OneTimeChange() {
                   ),
                 }}
                 sx={{
-                  width: "30%",
+                  width: "24%",
                   backgroundColor: "white",
                   borderRadius: "8px",
+                  fontFamily: "Nunito Sans",
+                  "& .MuiInputBase-root": {
+                    fontFamily: "Nunito Sans",
+                    fontWeight:'bold'
+                  },
                 }}
               />
             </Box>
@@ -507,6 +516,7 @@ export default function OneTimeChange() {
                 ml: -1,
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height:'2.5rem',
               }}
               onClick={handleClose}
             >
@@ -516,10 +526,11 @@ export default function OneTimeChange() {
               variant="contained"
               color="primary"
               sx={{
-                width: "48%",
+                width: "%",
                 borderRadius: "3px",
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height:'2.5rem',
               }}
             >
               Create Pricing Component

@@ -94,7 +94,8 @@ const CreateQuotation = () => {
                 borderRadius: "0.5rem",
               }}
             >
-              <Navigator />
+              <Box sx={{width:'100%',height:'100%',ml:-1}}>
+                <Navigator/>
               <Box
                 sx={{
                   display: "flex",
@@ -104,9 +105,11 @@ const CreateQuotation = () => {
                   ml: -1,
                 }}
               >
+                
                 <Client />
                 <UnitDetails />
                 <QuotationSummary />
+              </Box>
               </Box>
             </Box>
             <Box

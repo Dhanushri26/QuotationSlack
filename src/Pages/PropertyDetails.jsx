@@ -79,7 +79,7 @@ const PropertyDetails = () => {
                   sx={{
                     backgroundColor: "rgba(0,0,0,0.5)",
                     height: "70px",
-                    width: "90px",
+                    width: "105px",
                     borderRadius: "5%",
                     display: "flex",
                     justifyContent: "center",

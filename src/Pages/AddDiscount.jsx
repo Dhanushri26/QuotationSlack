@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Box,
   Divider,
@@ -10,6 +11,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  
 } from "@mui/material";
 import PropertyDetails from "./PropertyDetails";
 import { CloseOutlined } from "@mui/icons-material";
@@ -29,6 +31,23 @@ const AddDiscount = () => {
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("AED");
+
+  const handleOptionOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleOptionClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMenuItemClick = (value) => {
+    setSelectedOption(value);
+    handleOptionClose();
+  };
+
   const CustomInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
       paddingRight: "1.5rem",
@@ -54,7 +73,7 @@ const AddDiscount = () => {
         scrollbarWidth: "none",
         msScrollbarWidth: "none",
         fontFamily: "Nunito Sans",
-        height: "104vh",
+        height: "102vh",
         mt: -2,
       }}
     >
@@ -72,7 +91,7 @@ const AddDiscount = () => {
       <Divider sx={{ mt: -2, mb: -1 }} />
       <DialogContent
         sx={{
-          overflowY: "auto",
+          overflowY: "hidden",
           scrollbarWidth: "none",
           msScrollbarWidth: "none",
           fontFamily: "Nunito Sans",
@@ -92,26 +111,42 @@ const AddDiscount = () => {
           >
             <Typography
               gutterBottom
-              sx={{ fontSize: "0.8rem", fontFamily: "Nunito Sans" }}
+              sx={{
+                fontSize: "1rem",
+                fontFamily: "Nunito Sans",
+                fontWeight: "bold",
+              }}
             >
-              &nbsp;&nbsp;&nbsp;UNIT PRICE DETAIL
+              &nbsp;&nbsp;UNIT PRICE DETAIL
             </Typography>
-            <List style={{ mb: 19, fontSize: "10px" }}>
+            <List
+              style={{
+                mb: 19,
+                fontSize: "8px",
+                height: "50%",
+                overflowY: "scroll",
+                msScrollbarWidth: "none",
+                scrollbarWidth: "none",
+              }}
+            >
               {[
                 "Bill Name Here",
                 "Bill Name Here",
                 "Bill Name Here",
                 "Bill Name Here",
                 "Bill Name Here",
+                "Amenity Name Here",
+                "Amenity Name Here",
               ].map((item, index) => (
                 <ListItem
                   key={index}
                   divider
                   style={{
-                    padding: "4px 16px",
+                    padding: "4px 8px",
                     fontSize: "10px",
                     display: "block",
                     fontFamily: "Nunito Sans",
+                    color: "black",
                   }}
                 >
                   <div
@@ -120,20 +155,29 @@ const AddDiscount = () => {
                       justifyContent: "space-between",
                       fontSize: "10px",
                       fontFamily: "Nunito Sans",
-                      color: "grey",
+                      color: "black",
                     }}
                   >
                     <ListItemText
-                      secondary={item}
+                      secondary={
+                        <span style={{ fontWeight: "bold", color: "black" }}>
+                          {item}
+                        </span>
+                      }
                       style={{
                         fontSize: "10px",
                         fontFamily: "Nunito Sans",
-                        color: "grey",
+                        color: "black",
                       }}
                     />
                     <ListItemText
                       primary="$1,000"
-                      style={{ textAlign: "right", fontSize: "10px" }}
+                      style={{
+                        textAlign: "right",
+                        fontSize: "10px",
+                        fontFamily: "Nunito Sans",
+                      }}
+                      sx={{fontFamily:'Nunito Sans'}}
                     />
                   </div>
 
@@ -142,7 +186,7 @@ const AddDiscount = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      marginTop: "4px",
+                      marginTop: "2px",
                     }}
                   >
                     <Typography
@@ -154,20 +198,24 @@ const AddDiscount = () => {
                     >
                       Discount
                     </Typography>
+
                     <div style={{ display: "flex", gap: "8px" }}>
-                      <button
+                      <Button
+                        variant="outlined"
                         style={{
                           fontSize: "10px",
                           fontFamily: "Nunito Sans",
                           color: "grey",
-                          backgroundColor: "white",
                           border: "1px solid lightgrey",
                           borderRadius: "5px",
                           padding: "4px 8px",
+                          backgroundColor: "white",
+                          textTransform: "none",
                         }}
                       >
                         100,000
-                      </button>
+                      </Button>
+
                       <Select
                         style={{
                           fontSize: "10px",
@@ -176,14 +224,15 @@ const AddDiscount = () => {
                           backgroundColor: "white",
                           border: "1px solid lightgrey",
                           borderRadius: "5px",
-                          padding: "-1px 8px",
+                          padding: "-1px 10px",
+                          marginTop:'0.5rem'
                         }}
                         labelId="custom-select-label"
                         value={selectedValue}
                         onChange={handleChange}
                         displayEmpty
                         IconComponent={null}
-                        input={<CustomInput sx={{ paddingRight: 0 }} />}
+                        input={<CustomInput sx={{ paddingRight: 0, }} />}
                         renderValue={(value) => (
                           <span
                             style={{
@@ -219,13 +268,13 @@ const AddDiscount = () => {
                       >
                         <MenuItem
                           value="AED"
-                          sx={{ fontWeight: "bold", fontSize: "0.8rem" }}
+                          sx={{ fontWeight: "bold", fontSize: "0.8rem",fontFamily:'Nunito Sans' }}
                         >
                           AED
                         </MenuItem>
                         <MenuItem
                           value="$100,000"
-                          sx={{ fontWeight: "bold", fontSize: "0.8rem" }}
+                          sx={{ fontWeight: "bold", fontSize: "0.8rem",fontFamily:'Nunito Sans' }}
                         >
                           $100,000
                         </MenuItem>
@@ -235,8 +284,15 @@ const AddDiscount = () => {
                 </ListItem>
               ))}
             </List>
-            <Box sx={{ height: "2.5rem", width: "100%" }}></Box>
 
+              <Box
+                sx={{
+                position:'sticky',
+                bottom:0,
+                width:'100%',
+                right:0,
+                mt:8
+              }}>
             <Grid
               container
               justifyContent="space-between"
@@ -247,7 +303,6 @@ const AddDiscount = () => {
                 paddingLeft: "0.5rem",
                 borderRadius: "5px",
                 alignItems: "center",
-                mt: "9rem",
                 pt: "3rem",
               }}
             >
@@ -262,8 +317,6 @@ const AddDiscount = () => {
               </Typography>
             </Grid>
 
-            {/* <Divider style={{ margin: "10px 0" }} /> */}
-
             <Button
               variant="contained"
               color="primary"
@@ -272,11 +325,12 @@ const AddDiscount = () => {
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
                 pl: 2,
-                mt: 1.5,
+                mt: 1,
               }}
             >
               Update & Save
             </Button>
+            </Box>
           </Box>
         </Box>
       </DialogContent>

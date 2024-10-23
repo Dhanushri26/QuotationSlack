@@ -88,11 +88,12 @@ export default function PricingTable() {
       <Dialog
         open={open}
         sx={{
-          height: "100%",
+          height: "97%",
           "& .MuiDialog-paper": {
             height: "90vh",
             scrollbarWidth: "none",
             width: "30rem",
+            mt:8,
           },
         }}
       >
@@ -152,12 +153,13 @@ export default function PricingTable() {
                 <Stack
                   spacing={2}
                   direction="row"
-                  sx={{ alignItems: "center", justifyContent: "space-between" }}
+                  sx={{ justifyContent: "space-between",width:'100%' }}
                 >
+                  <Box sx={{ display: "flex", alignItems: "start", mt: "-0.5rem" }}>
                   <Stack
                     direction="row"
                     spacing={2}
-                    sx={{ alignItems: "center" }}
+                    sx={{ alignItems: "start" }}
                   >
                     <Avatar
                       sx={{
@@ -181,6 +183,7 @@ export default function PricingTable() {
                       {item.message}
                     </Typography>
                   </Stack>
+                  </Box>
                   <Stack
                     direction="row"
                     spacing={1}

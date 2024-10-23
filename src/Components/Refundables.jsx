@@ -61,6 +61,7 @@ export default function Refundables() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width:'30rem'
         },
       }}
       msScrollbarWidth="none"
@@ -81,6 +82,7 @@ export default function Refundables() {
           marginLeft: "-0.5rem",
           fontFamily: "Nunito Sans",
           ml: -1.5,
+          
         }}
       >
         Pricing Table
@@ -113,7 +115,7 @@ export default function Refundables() {
               ml: "-1rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "29rem",
               fontFamily: "Nunito Sans",
               fontSize: "1rem",
               boxShadow: "none",
@@ -216,7 +218,6 @@ export default function Refundables() {
               <TextField
                 variant="outlined"
                 size="small"
-                fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
@@ -278,6 +279,8 @@ export default function Refundables() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  width: "20rem",
+                  fontSize: "0.8rem",
                 }}
               >
                 Tax Group For Pricing Component
@@ -407,8 +410,8 @@ export default function Refundables() {
               <TextField
                 variant="outlined"
                 size="small"
-                width="40rem"
-                fullWidth
+                width="20rem"
+              
                 value={amount}
                 onChange={handleAmountChange}
                 InputProps={{
@@ -424,10 +427,10 @@ export default function Refundables() {
                   ),
                 }}
                 sx={{
-                  width: "30%",
+                  width: "24%",
                   backgroundColor: "white",
                   borderRadius: "8px",
-                  "& .MuiInputBase-input": { fontFamily: "Nunito Sans" },
+                  "& .MuiInputBase-input": { fontFamily: "Nunito Sans",fontWeight: "bold", },
                 }}
               />
             </Box>
@@ -452,7 +455,7 @@ export default function Refundables() {
             <Button
               variant="contained"
               color="primary"
-              sx={{ width: "48%", borderRadius: "3px", textTransform: "none" }}
+              sx={{ width: "%", borderRadius: "3px", textTransform: "none" ,fontFamily:'Nunito Sans',mr:-2}}
             >
               Create Pricing Component
             </Button>

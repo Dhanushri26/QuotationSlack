@@ -7,10 +7,39 @@ import RealEstateCard from "./UnitData"; // Import the updated RealEstateCard co
 import { Dialog, Typography } from "@mui/material";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Unit from "../Pages/Unit";
+import QuotationSummary from "./QuotationSummary"; // Import QuotationSummary component
 
 export default function UnitDetails() {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+
+  // State to hold item data
+  const [itemData, setItemData] = useState([
+    {
+      img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
+      title: "Property 1",
+      name: "Jumeirah Estate",
+      amount: 1200,
+    },
+    {
+      img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
+      title: "Property 2",
+      name: "Palm Jumeirah",
+      amount: 1500,
+    },
+    {
+      img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
+      title: "Property 3",
+      name: "Downtown Dubai",
+      amount: 2000,
+    },
+    {
+      img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
+      title: "Property 4",
+      name: "Marina Bay",
+      amount: 1800,
+    },
+  ]);
 
   const handleClickOpen = (item) => {
     setSelectedItem(item);
@@ -20,6 +49,16 @@ export default function UnitDetails() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  // Function to handle the deletion of an item by its index
+  const handleDelete = (index) => {
+    const updatedData = itemData.filter((_, i) => i !== index);
+    setItemData(updatedData);
+  };
+
+  // Calculate totals for QuotationSummary
+  const totalAmount = itemData.reduce((total, item) => total + item.amount, 0);
+  const totalQty = itemData.length;
 
   return (
     <Box
@@ -46,7 +85,10 @@ export default function UnitDetails() {
                 loading="lazy"
                 style={styles.image}
               />
-              <RiDeleteBinLine style={styles.deleteIcon} />
+              <RiDeleteBinLine
+                style={styles.deleteIcon}
+                onClick={() => handleDelete(index)} // Call handleDelete with the item's index
+              />
               <Box sx={{ marginTop: "1rem" }}>
                 {/* Passing name and amount from the list */}
                 <RealEstateCard name={item.name} amount={item.amount} />
@@ -59,36 +101,12 @@ export default function UnitDetails() {
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <Unit item={selectedItem} />
       </Dialog>
+
+      {/* Pass data to QuotationSummary */}
+      <QuotationSummary totalAmount={totalAmount} totalQty={totalQty} />
     </Box>
   );
 }
-
-const itemData = [
-  {
-    img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
-    title: "Property 1",
-    name: "Jumeirah Estate",
-    amount: 1200,
-  },
-  {
-    img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
-    title: "Property 2",
-    name: "Palm Jumeirah",
-    amount: 1500,
-  },
-  {
-    img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
-    title: "Property 3",
-    name: "Downtown Dubai",
-    amount: 2000,
-  },
-  {
-    img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
-    title: "Property 4",
-    name: "Marina Bay",
-    amount: 1800,
-  },
-];
 
 const styles = {
   container: {

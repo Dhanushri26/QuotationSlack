@@ -96,11 +96,12 @@ export default function PrimaryComponent() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width: "31rem",
         },
       }}
       msScrollbarWidth="none"
       scrollbarWidth="none"
-      width="20rem"
+      width="10rem"
     >
       <DialogTitle
         sx={{
@@ -116,6 +117,7 @@ export default function PrimaryComponent() {
           marginTop: "-1.5rem",
           fontFamily: "Nunito Sans",
           ml: -1.5,
+          width:'30rem'
         }}
       >
         Pricing Table
@@ -149,7 +151,7 @@ export default function PrimaryComponent() {
               ml: "-1rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "30rem",
               fontFamily: "Nunito Sans",
               boxShadow: "none",
               "&:hover": {
@@ -167,7 +169,7 @@ export default function PrimaryComponent() {
             </IconButton>
           </Button>
 
-          <Box display={"flex"} sx={{ fontFamily: "Nunito Sans" }}>
+          <Box display={"flex"} sx={{ fontFamily: "Nunito Sans" ,width:'30rem'}}>
             <Box sx={{ marginBottom: "1.5rem", ml: "-1rem", flex: 2 }}>
               <Typography
                 variant="body2"
@@ -185,10 +187,10 @@ export default function PrimaryComponent() {
                 exclusive
                 onChange={handleRevenueChange}
                 sx={{
-                  width: "50%",
+                  width: "30%",
                   "& .MuiToggleButton-root": {
                     borderRadius: "4px",
-                    padding: "7px 15px",
+                    padding: "7px 12px",
                     textTransform: "none",
                     fontWeight: "500",
                     borderColor: "#e0e0e0",
@@ -249,8 +251,8 @@ export default function PrimaryComponent() {
             <Box
               sx={{
                 marginBottom: "1.5rem",
-                ml: "-1rem",
-                width: { xs: "100%", md: "45%" },
+                ml: "-13rem",
+                width: { xs: "10%", md: "52%" },
               }}
             >
               <Typography
@@ -267,7 +269,7 @@ export default function PrimaryComponent() {
               <TextField
                 // variant="outlined"
                 size="small"
-                fullWidth
+                // fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
@@ -373,7 +375,7 @@ export default function PrimaryComponent() {
               </TextField>
             </Box>
 
-            <Box sx={{ marginBottom: "1.5rem", ml: "2.5rem" }}>
+            <Box sx={{ marginBottom: "1.5rem", ml: "1.5rem" }}>
               <Typography
                 variant="body2"
                 sx={{
@@ -446,7 +448,7 @@ export default function PrimaryComponent() {
               <TextField
                 // variant="outlined"
                 size="small"
-                width="37rem"
+                width="30rem"
                 value={amount}
                 onChange={handleAmountChange}
                 InputProps={{
@@ -462,7 +464,7 @@ export default function PrimaryComponent() {
                   ),
                 }}
                 sx={{
-                  width: "30%",
+                  width: "25%",
                   backgroundColor: "#fff",
                   borderRadius: "8px",
                   "&input": { fontWeight: "bold", fontFamily: "Nunito Sans" },
@@ -476,13 +478,14 @@ export default function PrimaryComponent() {
               justifyContent: "space-between",
               marginBottom: "2rem",
               ml: "-1rem",
+              width:'30rem',
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                width: "30%",
+                width: "20%",
                 borderRadius: "8px",
                 padding: "0.5rem",
               }}
@@ -537,7 +540,7 @@ export default function PrimaryComponent() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                width: "30%",
+                width: "20%",
                 borderRadius: "8px",
                 padding: "0.5rem",
               }}
@@ -601,7 +604,7 @@ export default function PrimaryComponent() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                width: "30%",
+                width: "20%",
                 borderRadius: "8px",
                 padding: "0.5rem",
               }}
@@ -658,7 +661,7 @@ export default function PrimaryComponent() {
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between",width:'30rem' }}>
             <Button
               variant="outlined"
               sx={{
@@ -671,6 +674,7 @@ export default function PrimaryComponent() {
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
                 fontSize: "14px",
+                height:'2.5rem'
               }}
               onClick={handleClose}
             >
@@ -680,10 +684,11 @@ export default function PrimaryComponent() {
               variant="contained"
               color="primary"
               sx={{
-                width: "48%",
+                width: "%",
                 borderRadius: "3px",
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height:'2.5rem'
               }}
             >
               Create Pricing Component

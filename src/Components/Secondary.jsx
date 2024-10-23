@@ -63,6 +63,7 @@ export default function Secondary() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width:'30rem'
         },
       }}
       msScrollbarWidth="none"
@@ -76,13 +77,15 @@ export default function Secondary() {
           fontWeight: "bold",
           fontSize: "1.25rem",
           color: "#333",
-          paddingBottom: "-1.5rem",
+          paddingBottom: "-2.5rem",
           borderBottom: "1px solid #e0e0e0",
           marginBottom: "0.75rem",
           marginTop: "-1.5rem",
           marginLeft: "-0.5rem",
           fontFamily: "Nunito Sans",
           ml: -1.2,
+          pb:-1
+        
         }}
       >
         Pricing Table
@@ -115,7 +118,7 @@ export default function Secondary() {
               ml: "-1rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "29rem",
               boxShadow: "none",
               fontFamily: "Nunito Sans",
               fontSize: "1rem",
@@ -209,7 +212,7 @@ export default function Secondary() {
               sx={{
                 marginBottom: "1.5rem",
                 ml: "-1rem",
-                width: { xs: "100%", md: "45%" },
+                width: { xs: "100%", md: "25%" },
               }}
             >
               <Typography
@@ -219,6 +222,8 @@ export default function Secondary() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  fontSize: "0.9rem",
+                  width: "15rem",
                 }}
               >
                 Pricing Component
@@ -227,19 +232,20 @@ export default function Secondary() {
               <TextField
                 variant="outlined"
                 size="small"
-                fullWidth
+                // fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <KeyboardArrowDownIcon />
+                      <KeyboardArrowDownIcon  sx={{ml:-2}}/>
                     </InputAdornment>
                   ),
                   disableUnderline: true,
                 }}
                 sx={{
+                  width:'14.5rem',
                   backgroundColor: "white",
                   borderRadius: "8px",
                   fontFamily: "Nunito Sans",
@@ -289,6 +295,8 @@ export default function Secondary() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  fontSize: "0.8rem",
+                  width: "15rem",
                 }}
               >
                 Tax Group For Pricing Component
@@ -471,8 +479,7 @@ export default function Secondary() {
               <TextField
                 variant="outlined"
                 size="small"
-                width="40rem"
-                fullWidth
+                width="20rem"
                 value={amount}
                 onChange={handleAmountChange}
                 InputProps={{
@@ -488,16 +495,16 @@ export default function Secondary() {
                   ),
                 }}
                 sx={{
-                  width: "30%",
+                  width: "23.4%",
                   backgroundColor: "white",
                   borderRadius: "8px",
-                  "& .MuiInputBase-input": { fontFamily: "Nunito Sans" },
+                  "& .MuiInputBase-input": { fontFamily: "Nunito Sans",fontWeight: "bold" },
                 }}
               />
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", }}>
             <Button
               variant="outlined"
               sx={{
@@ -509,6 +516,7 @@ export default function Secondary() {
                 ml: -1,
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height: "2.5rem",
               }}
               onClick={handleClose}
             >
@@ -518,10 +526,11 @@ export default function Secondary() {
               variant="contained"
               color="primary"
               sx={{
-                width: "48%",
+                width: "%",
                 borderRadius: "3px",
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height: "2.5rem",
               }}
             >
               Create Pricing Component

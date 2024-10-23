@@ -65,6 +65,7 @@ export default function ParkingSlot() {
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           fontFamily: "Nunito Sans",
+          width:'30rem'
         },
       }}
       msScrollbarWidth="none"
@@ -112,14 +113,16 @@ export default function ParkingSlot() {
               justifyContent: "space-between",
               padding: "0.75rem 1rem",
               marginBottom: "2rem",
-              ml: "-1rem",
+              ml: "-1.5rem",
               mr: "-5rem",
               paddingRight: "0.5rem",
-              width: "36rem",
+              width: "29rem",
               boxShadow: "none",
               "&:hover": {
                 boxShadow: "none",
               },
+              mb:1,
+              fontFamily:'Nunito Sans'
             }}
           >
             Parking Slot Component
@@ -224,7 +227,6 @@ export default function ParkingSlot() {
               <TextField
                 variant="outlined"
                 size="small"
-                fullWidth
                 select
                 value={selectedValue}
                 onChange={handleChange}
@@ -274,6 +276,8 @@ export default function ParkingSlot() {
                   fontWeight: 500,
                   color: "grey",
                   fontFamily: "Nunito Sans",
+                  width:'20rem',
+                  fontSize: "0.8rem",
                 }}
               >
                 Tax Group For Pricing Component
@@ -449,7 +453,7 @@ export default function ParkingSlot() {
               <TextField
                 variant="outlined"
                 size="small"
-                width="34rem"
+                width="20rem"
                 value={amount}
                 onChange={handleAmountChange}
                 InputProps={{
@@ -462,12 +466,13 @@ export default function ParkingSlot() {
                   ),
                 }}
                 sx={{
-                  width: "30%",
+                  width: "23.5%",
                   backgroundColor: "white",
                   borderRadius: "8px",
                   "& .MuiInputBase-input": {
                     fontFamily: "Nunito Sans",
                     fontSize: "1rem",
+                    fontWeight: 'bold',
                   },
                 }}
               />
@@ -486,6 +491,7 @@ export default function ParkingSlot() {
                 ml: -1,
                 fontFamily: "Nunito Sans",
                 textTransform: "none",
+                height: "2.5rem",
               }}
               onClick={handleClose}
             >
@@ -495,10 +501,11 @@ export default function ParkingSlot() {
               variant="contained"
               color="primary"
               sx={{
-                width: "48%",
+                width: "%",
                 borderRadius: "3px",
                 textTransform: "none",
                 fontFamily: "Nunito Sans",
+                height: "2.5rem",
               }}
             >
               Create Pricing Component
