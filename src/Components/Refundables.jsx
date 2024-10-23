@@ -9,7 +9,19 @@ export default function Refundables() {
   const [open, setOpen] = useState(true);
   const [revenueType, setRevenueType] = useState('Lease');
   const [componentBasedOn, setComponentBasedOn] = useState('Amount');
+  const [selectedValue, setSelectedValue] = useState('Primary Component');
+  const [selectedTax, setSelectedTax] = useState('GST');  
+  const [amount, setAmount] = useState('200'); 
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
+  const handleTaxChange = (event) => {
+    setSelectedTax(event.target.value);
+  };
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  }
   const handleClose = () => setOpen(false);
   const handleRevenueChange = (event, newType) => setRevenueType(newType);
   const handleComponentBasedChange = (event, newValue) => setComponentBasedOn(newValue);
@@ -49,7 +61,9 @@ export default function Refundables() {
         borderBottom: '1px solid #e0e0e0',
         marginBottom: '0.75rem',
         marginTop:'-1.5rem',
-        marginLeft:'-0.5rem'
+        marginLeft:'-0.5rem',
+        fontFamily: 'Nunito Sans',
+        ml:-1.5,
       }}>
         Pricing Table
         <IconButton onClick={handleClose}>
@@ -77,7 +91,10 @@ export default function Refundables() {
               ml:'-1rem',
               mr:'-5rem',
               paddingRight: '0.5rem',
-              width:'36rem'
+              width:'36rem',
+              fontFamily: 'Nunito Sans',
+              fontSize:'1rem',
+              boxShadow:'none',
             }}
           >
           Refundable Price Component
@@ -102,7 +119,7 @@ export default function Refundables() {
               sx={{
                 width: '50%',
                 '& .MuiToggleButton-root': {
-                  borderRadius: '5px',
+                  borderRadius: '4px',
                   padding: '7px 15px',
                   textTransform: 'none',
                   fontWeight: '500',
@@ -110,12 +127,17 @@ export default function Refundables() {
                   flex: 1,
                   marginInline:'2px',
                   color: 'grey',
+                  fontFamily:'Nunito Sans',
                   
                 },
                 '& .Mui-selected': {
                   backgroundColor: '#1976d2',
                   color: '#fff',
                 },
+                '& .MuiToggleButton-root:hover': {
+        backgroundColor: 'inherit',  
+        color: 'inherit',            
+      },
               }}
             >
               <ToggleButton value="Lease" sx={{ 
@@ -127,7 +149,7 @@ export default function Refundables() {
     }}>Lease</ToggleButton>
               <ToggleButton value="Sales">Sales</ToggleButton>
               <ToggleButton value="Manage">Manage</ToggleButton>
-              <ToggleButton value="Other">Stay</ToggleButton>
+              <ToggleButton value="Stay">Stay</ToggleButton>
             </ToggleButtonGroup>
           </Box>
 
@@ -141,14 +163,13 @@ export default function Refundables() {
     >
       Pricing Component
     </Typography>
-
     <TextField
       variant="outlined"
       size="small"
       fullWidth
       select
-      value="Primary Component"
-      placeholder="Select Pricing Component"
+      value={selectedValue}  
+      onChange={handleChange} 
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -160,20 +181,30 @@ export default function Refundables() {
       sx={{
         backgroundColor: 'white',
         borderRadius: '8px',
+        fontFamily: 'Nunito Sans',
         '& .MuiSelect-icon': {
           display: 'none',
+        },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
         },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
-          fontSize:'0.5rem'
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
-      <MenuItem value="Primary Component">Primary Component</MenuItem>
-      <MenuItem value="Secondary Component">Secondary</MenuItem>
-      <MenuItem value="Tertiary">Tertiary</MenuItem>
+      <MenuItem value="Primary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Primary Component
+      </MenuItem>
+      <MenuItem value="Secondary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Secondary
+      </MenuItem>
+      <MenuItem value="Tertiary" sx={{ fontFamily: 'Nunito Sans' }}>
+        Tertiary
+      </MenuItem>
     </TextField>
   </Box>
 
@@ -190,8 +221,8 @@ export default function Refundables() {
       size="small"
       fullWidth
       select
-      value="GST"
-      placeholder="Select Tax Group"
+      value={selectedTax} 
+      onChange={handleTaxChange}  
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -206,16 +237,19 @@ export default function Refundables() {
         '& .MuiSelect-icon': {
           display: 'none',
         },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
+        },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
+          fontFamily: 'Nunito Sans',
         },
       }}
     >
-      <MenuItem value="GST">GST</MenuItem>
-      <MenuItem value="VAT">VAT</MenuItem>
-      <MenuItem value="Sales Tax">Sales Tax</MenuItem>
+      <MenuItem value="GST" sx={{ fontFamily: 'Nunito Sans' }}>GST</MenuItem>
+      <MenuItem value="VAT" sx={{ fontFamily: 'Nunito Sans' }}>VAT</MenuItem>
+      <MenuItem value="Sales Tax" sx={{ fontFamily: 'Nunito Sans' }}>Sales Tax</MenuItem>
     </TextField>
   </Box>
 </Box>
@@ -241,10 +275,15 @@ export default function Refundables() {
                   marginInline:'0px',
                   marginRight:'8px',
                   width:'100%',
+                  fontFamily:'Nunito Sans',
                 },
                 '& .Mui-selected': {
                   backgroundColor: '#1976d2',
                   color: '#fff',
+                },
+                '& .MuiToggleButton-root:hover': {
+                   backgroundColor: 'inherit',  
+                    color: 'inherit',            
                 },
               }}
             >
@@ -264,7 +303,7 @@ export default function Refundables() {
 <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '2rem',width:'120rem',ml:'-1rem' ,flex:1 ,}}>
   <TextField
     variant="outlined"
-    size="small" width="40rem" fullWidth    value="200" 
+    size="small" width="40rem" fullWidth   value={amount} onChange={handleAmountChange}
     InputProps={{
       endAdornment: (
         <InputAdornment position="end">
@@ -274,15 +313,12 @@ export default function Refundables() {
         </InputAdornment>
       ),
     }}
-    sx={{ width: '30%', backgroundColor: 'white', borderRadius: '8px' }}
+    sx={{ width: '30%', backgroundColor: 'white', borderRadius: '8px', '& .MuiInputBase-input': { fontFamily: 'Nunito Sans' }, '& .MuiOutlinedInput-notchedOutline': { border: 'none' } }}
   />
 </Box>
-          </Box>
-          
-
-
+</Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }}>Back</Button>
+            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }} onClick={handleClose}>Back</Button>
             <Button
               variant="contained"
               color="primary"

@@ -5,14 +5,14 @@ import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { PiNumberCircleFourFill } from "react-icons/pi";
 import Box from '@mui/material/Box';
+// import { Divider } from '@mui/material';
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
 }
 
 export default function Navigator() {
   const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" href="/" onClick={handleClick}>
+    <Link underline="hover" key="1" color="inherit" href="/" onClick={handleClick} sx={{fontFamily:'Nunito Sans',fontSize:'14px'}}>
       Add Contact
     </Link>,
     <Link
@@ -20,7 +20,7 @@ export default function Navigator() {
       key="2"
       color="inherit"
       href="/material-ui/getting-started/installation/"
-      onClick={handleClick}
+      onClick={handleClick} sx={{fontFamily:'Nunito Sans',fontSize:'14px'}}
     >
       Lead Details
     </Link>,
@@ -30,7 +30,7 @@ export default function Navigator() {
     <Typography key="3" sx={{  color: 'primary', fontWeight: 'bold',fontSize:'14px',fontFamily:'Nunito Sans' }}>
 Quotation Details  </Typography>,
  <Box display="flex" alignItems="center" mt={0} key="3">
- <PiNumberCircleFourFill style={{ fontSize: '1.5rem', marginRight: '8px', marginTop: '2px' }} />
+ <PiNumberCircleFourFill style={{ fontSize: '1.2rem', marginRight: '8px', marginTop: '2px' }} />
  <Typography 
    sx={{ 
      color: 'primary.main', 
@@ -46,7 +46,8 @@ Quotation Details  </Typography>,
   ];
 
   return (
-    <Stack spacing={2} sx={{ width: '99.9%',ml:'-1rem',borderBottom:'1px solid lightgrey', }}>
+    <>
+    <Stack spacing={2} sx={{ width: '96%',ml:'-1rem',borderBottom:'1px solid #f6f6f6' }}>
       <Breadcrumbs sx={{width:'100%',backgroundColor:'white',height:'2.5rem',color:'blue',fontWeight:'bold',fontSize:'1rem',alignItems:'center',pt:'1rem',pl:'20px',borderTopLeftRadius:'5px',borderTopRightRadius:'5px'}}
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -54,5 +55,7 @@ Quotation Details  </Typography>,
         {breadcrumbs}
       </Breadcrumbs>
     </Stack>
+    {/* <Divider sx={{width:'96.5%',pl:-2,color:'#F5F7FA'}}/> */}
+    </>
   );
 }

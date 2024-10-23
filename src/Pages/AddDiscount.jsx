@@ -48,7 +48,7 @@ const AddDiscount = () => {
 
  
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="md"  fullWidth sx={{scrollbarWidth:'none',msScrollbarWidth:'none',fontFamily:'Nunito Sans',height:'100vh'}}>
+    <Dialog open={open} onClose={handleClose} maxWidth="md"  fullWidth sx={{scrollbarWidth:'none',msScrollbarWidth:'none',fontFamily:'Nunito Sans',height:'104vh',mt:-2}}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
       <DialogTitle>Add Discount to unit</DialogTitle>
       <CloseOutlined onClick={handleClose} />

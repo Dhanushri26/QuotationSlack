@@ -8,6 +8,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Typography from '@mui/material/Typography';
 import Lands from "../Components/Lands";
 import Navigator from "../Components/Navigator";
+import { Button } from "@mui/material";
 const CreateQuotation = () => {
   return (
     <Box sx={{overflow:'hidden',maxHeight:'100vh'}}>
@@ -42,7 +43,7 @@ const CreateQuotation = () => {
             marginRight: '0.5rem',
           }}
         />
-        <Typography sx={{ fontSize: '15px', fontWeight: 'bold' }}>
+        <Typography sx={{ fontSize: '13px', fontWeight: 'bold',fontFamily:'Nunito Sans' }}>
           Create Quotation to Existing Lead
         </Typography>
       </Box>
@@ -50,10 +51,10 @@ const CreateQuotation = () => {
         <Lands/>
     </Box>
        
-        <Box component="main" sx={{ flexGrow: 1, pl: 4,pt:2, width: '100%', maxWidth: '100%', height: '100vh', overflow: 'auto',flexDirection:'column' }}>
-        <Box component="main" sx={{ flexGrow: 1,pl:1,width: '100%', maxWidth: '100%', height: '100vh', overflow: 'auto' }}>
+        <Box component="main" sx={{ flexGrow: 1, pl: 3,pt:2, width: '100%', maxWidth: '100%', height: '100vh', overflow: 'hidden',flexDirection:'column', }}>
+        <Box component="main" sx={{ flexGrow: 1,pl:1,width: '100%', maxWidth: '100%', height: '100vh', overflow: 'hidden',borderRadius:'0.5rem'}}>
           <Navigator/>
-          <Box sx ={{display:'flex',width:'100%'}}> 
+          <Box sx ={{display:'flex',width:'100%',overflow:'hidden',maxHeight:'60vh',ml:-1}}> 
           <Client />
           <UnitDetails />
           <QuotationSummary />
@@ -61,7 +62,7 @@ const CreateQuotation = () => {
           </Box>
           <Box
       sx={{
-        mt: "-9.3rem",
+        mt: "-12.5rem",
         height: '4rem',
         color: 'blue',
         width: '100%',
@@ -74,19 +75,22 @@ const CreateQuotation = () => {
         borderBottomRightRadius: '0.5rem',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         padding: '0 1rem', 
+        pr:'3rem',
+        fontFamily:'Nunito Sans'
+        
       }}
     >
-      <button style={{color:'black',backgroundColor:'white',boxShadow:'none',border:'1px solid lightgrey',borderRadius:'0.3rem',padding:'0.5rem'}}>
+      <Button sx={{color:'black',boxShadow:'none',border:'1px solid lightgrey',borderRadius:'4px',padding:'0.5rem',height:"2.3rem",textTransform:"none",fontFamily:'Nunito Sans'}}>
         Previous
-      </button>
-      <Box display="flex" sx={{pr:6
+      </Button>
+      <Box display="flex" sx={{pr:8
       }}>
-      <button style={{color:'black',backgroundColor:'white',boxShadow:'none',border:'1px solid lightgrey',borderRadius:'0.3rem',padding:'0.5rem',}}>
+      <Button sx={{color:'black',backgroundColor:'white',boxShadow:'none',border:'1px solid lightgrey',borderRadius:'4px',padding:'0.5rem',height:'2.3rem',textTransform:"none",fontFamily:'Nunito Sans'}}>
         Cancel
-      </button>
-      <button style={{color:'white',backgroundColor:'blue',boxShadow:'none',border:'1px solid lightgrey',borderRadius:'0.3rem',padding:'0.5rem',marginLeft:"1rem"}}>
+      </Button>
+      <Button sx={{color:'white',height:"2.3rem", textTransform:"none",backgroundColor:'#0D6EFD',boxShadow:'none',borderRadius:'4px',padding:'0.5rem',marginLeft:"1rem",fontFamily:'Nunito Sans'}}>
         Create Quotation
-      </button>
+      </Button>
       </Box>
     </Box>
           </Box>

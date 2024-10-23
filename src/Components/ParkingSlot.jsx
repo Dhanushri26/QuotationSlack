@@ -9,7 +9,23 @@ export default function ParkingSlot() {
   const [open, setOpen] = useState(true);
   const [revenueType, setRevenueType] = useState('Lease');
   const [componentBasedOn, setComponentBasedOn] = useState('Amount');
+  const[selectedValue, setSelectedValue] = useState('Primary Component');
+  const [selectedTax, setSelectedTax] = useState('GST');
+  const[amount,setAmount]=useState('200');
+ const[chargeable,setChargeable]=useState('Yes');
 
+ const handleChargeableChange=(event) =>{
+  setChargeable(event.target.value);
+ }
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  }
+  const handleTaxChange = (event) => {
+    setSelectedTax(event.target.value);
+  }
+  const handleAmountChange=(event)=>{
+    setAmount(event.target.value)
+  }
   const handleClose = () => setOpen(false);
   const handleRevenueChange = (event, newType) => setRevenueType(newType);
   const handleComponentBasedChange = (event, newValue) => setComponentBasedOn(newValue);
@@ -78,7 +94,11 @@ export default function ParkingSlot() {
               ml:'-1rem',
               mr:'-5rem',
               paddingRight: '0.5rem',
-              width:'36rem'
+              width:'36rem',
+              boxShadow: 'none',
+              '&:hover': {
+                boxShadow: 'none',
+              }
             }}
           >
             Parking Slot Component
@@ -111,6 +131,12 @@ export default function ParkingSlot() {
                   flex: 1,
                   marginInline:'2px',
                   color: 'grey',
+                  
+                  '&:hover': {
+                    backgroundColor: 'inherit',
+                    color: 'inherit',
+                  }
+
                   
                 },
                 '& .Mui-selected': {
@@ -148,7 +174,8 @@ export default function ParkingSlot() {
       size="small"
       fullWidth
       select
-      value="Primary Component"
+      value={selectedValue}
+      onChange={handleChange}
       placeholder="Select Pricing Component"
       InputProps={{
         endAdornment: (
@@ -164,11 +191,14 @@ export default function ParkingSlot() {
         '& .MuiSelect-icon': {
           display: 'none',
         },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
+        },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
-          fontSize:'0.5rem'
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
@@ -191,7 +221,8 @@ export default function ParkingSlot() {
       size="small"
       fullWidth
       select
-      value="GST"
+      value={selectedTax}
+      onChange={handleTaxChange}
       placeholder="Select Tax Group"
       InputProps={{
         endAdornment: (
@@ -207,10 +238,14 @@ export default function ParkingSlot() {
         '& .MuiSelect-icon': {
           display: 'none',
         },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
+        },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
@@ -226,9 +261,9 @@ export default function ParkingSlot() {
               Chargeable
             </Typography>
             <ToggleButtonGroup
-              value={componentBasedOn}
+              value={chargeable}
               exclusive
-              onChange={handleComponentBasedChange}
+              onChange={handleChargeableChange}
               sx={{
                 width: '100%',
                 '& .MuiToggleButton-root': {
@@ -240,6 +275,12 @@ export default function ParkingSlot() {
                   flex: 1,
                   marginInline:'0px',
                   marginRight:'8px',
+                  
+                  '&:hover': {
+                    backgroundColor: 'inherit',
+                    color: 'inherit',
+                  }
+
 
                 },
                 '& .Mui-selected': {
@@ -248,8 +289,8 @@ export default function ParkingSlot() {
                 },
               }}
             >
-              <ToggleButton value="Amount" >Yes</ToggleButton>
-              <ToggleButton value="UOM">No</ToggleButton>
+              <ToggleButton value="Yes" >Yes</ToggleButton>
+              <ToggleButton value="No">No</ToggleButton>
             </ToggleButtonGroup>
           </Box>
  <Box sx={{ marginBottom: '1.5rem',mr:"2rem" }}>
@@ -280,7 +321,7 @@ export default function ParkingSlot() {
             >
               <ToggleButton value="Amount">Amount</ToggleButton>
               <ToggleButton value="UOM">UOM</ToggleButton>
-              <ToggleButton value="UOM">%</ToggleButton>
+              <ToggleButton value="%">%</ToggleButton>
 
             </ToggleButtonGroup>
           </Box>
@@ -294,7 +335,7 @@ export default function ParkingSlot() {
 <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '2rem',width:'120rem',ml:'-1rem' ,flex:1 ,}}>
   <TextField
     variant="outlined"
-    size="small" width="40rem" fullWidth    value="200" 
+    size="small" width="40rem" fullWidth    value={amount} onChange={handleAmountChange} 
     InputProps={{
       endAdornment: (
         <InputAdornment position="end">
@@ -304,7 +345,7 @@ export default function ParkingSlot() {
         </InputAdornment>
       ),
     }}
-    sx={{ width: '30%', backgroundColor: 'white', borderRadius: '8px' }}
+    sx={{ width: '30%', backgroundColor: 'white', borderRadius: '8px','& .MuiInputBase-input': { fontFamily: 'Nunito Sans', fontSize: '1rem'} }}
   />
 </Box>
           </Box>
@@ -312,7 +353,7 @@ export default function ParkingSlot() {
 
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }}>Back</Button>
+            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }} onClick={handleClose}>Back</Button>
             <Button
               variant="contained"
               color="primary"

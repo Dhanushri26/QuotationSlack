@@ -1,8 +1,10 @@
 import './App.css'
-import CreateQuotation from './Pages/CreateQuotation'
+
+ import CreateQuotation from './Pages/CreateQuotation'
 const App = () => {
   return (
-    <CreateQuotation />
+   <CreateQuotation />
+  
   )
 }
 

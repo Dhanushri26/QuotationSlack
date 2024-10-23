@@ -9,7 +9,22 @@ export default function InventoryItem() {
   const [open, setOpen] = useState(true);
   const [revenueType, setRevenueType] = useState('Lease');
   const [componentBasedOn, setComponentBasedOn] = useState('Amount');
-
+  const[amount,setAmount]=useState('200');
+  const [selectedValue, setSelectedValue] = useState('Primary Component');
+  const[selectedTax, setSelectedTax] = useState('GST');
+  const[quantity,setQuantity]=useState('10');
+  const handleTaxChange=(event) =>{
+    setSelectedTax(event.target.value);
+  }
+  const handleAmountChange=(event)=>{
+    setAmount(event.target.value)
+  }
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+  const handleQuantityChange=(event)=>{
+    setQuantity(event.target.value)
+  }
   const handleClose = () => setOpen(false);
   const handleRevenueChange = (event, newType) => setRevenueType(newType);
   const handleComponentBasedChange = (event, newValue) => setComponentBasedOn(newValue);
@@ -77,7 +92,11 @@ export default function InventoryItem() {
               ml:'-1rem',
               mr:'-5rem',
               paddingRight: '0.5rem',
-              width:'36rem'
+              width:'36rem',
+              boxShadow:'none',
+              '&:hover': {
+                boxShadow: 'none',
+              }
             }}
           >
             Inventory Item Component
@@ -110,12 +129,18 @@ export default function InventoryItem() {
                   flex: 1,
                   marginInline:'2px',
                   color: 'grey',
+                  fontFamily:'Nunito Sans',
+                  '&:hover': {
+                    backgroundColor: 'inherit',
+                    color: 'inherit',
+                  }
                   
                 },
                 '& .Mui-selected': {
                   backgroundColor: '#1976d2',
                   color: '#fff',
                 },
+
               }}
             >
               <ToggleButton value="Lease" sx={{ 
@@ -141,14 +166,14 @@ export default function InventoryItem() {
     >
       Pricing Component
     </Typography>
-
+    
     <TextField
       variant="outlined"
       size="small"
       fullWidth
       select
-      value="Primary Component"
-      placeholder="Select Pricing Component"
+      value={selectedValue}  
+      onChange={handleChange} 
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -160,20 +185,30 @@ export default function InventoryItem() {
       sx={{
         backgroundColor: 'white',
         borderRadius: '8px',
+        fontFamily: 'Nunito Sans',
         '& .MuiSelect-icon': {
           display: 'none',
+        },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
         },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
-          fontSize:'0.5rem'
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
-      <MenuItem value="Primary Component">Primary Component</MenuItem>
-      <MenuItem value="Secondary Component">Secondary</MenuItem>
-      <MenuItem value="Tertiary">Tertiary</MenuItem>
+      <MenuItem value="Primary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Primary Component
+      </MenuItem>
+      <MenuItem value="Secondary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Secondary
+      </MenuItem>
+      <MenuItem value="Tertiary" sx={{ fontFamily: 'Nunito Sans' }}>
+        Tertiary
+      </MenuItem>
     </TextField>
   </Box>
 
@@ -191,8 +226,8 @@ export default function InventoryItem() {
       size="small"
       fullWidth
       select
-      value="GST"
-      placeholder="Select Tax Group"
+      value={selectedTax}  
+      onChange={handleTaxChange} 
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -204,19 +239,30 @@ export default function InventoryItem() {
       sx={{
         backgroundColor: 'white',
         borderRadius: '8px',
+        fontFamily: 'Nunito Sans',
         '& .MuiSelect-icon': {
           display: 'none',
+        },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
         },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
-      <MenuItem value="GST">GST</MenuItem>
-      <MenuItem value="VAT">VAT</MenuItem>
-      <MenuItem value="Sales Tax">Sales Tax</MenuItem>
+      <MenuItem value="GST" sx={{ fontFamily: 'Nunito Sans' }}>
+        GST
+      </MenuItem>
+      <MenuItem value="VAT" sx={{ fontFamily: 'Nunito Sans' }}>
+        VAT
+      </MenuItem>
+      <MenuItem value="Sales Tax" sx={{ fontFamily: 'Nunito Sans' }}>
+        Sales Tax
+      </MenuItem>
     </TextField>
   </Box>
 </Box>
@@ -240,6 +286,12 @@ export default function InventoryItem() {
                   flex: 1,
                   marginInline:'0px',
                   marginRight:'8px',
+                  fontFamily: 'Nunito Sans',
+
+                  '&:hover': {
+                    backgroundColor: 'inherit',
+                    color: 'inherit',
+                  }
 
                 },
                 '& .Mui-selected': {
@@ -266,7 +318,8 @@ export default function InventoryItem() {
         <TextField
           variant="outlined"
           size="small"
-          value="100"
+          value={amount}
+          onClick={handleAmountChange}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -276,7 +329,10 @@ export default function InventoryItem() {
               </InputAdornment>
             ),
           }}
-          sx={{ backgroundColor: 'white', borderRadius: '8px', width: '190%' }} // Use full width
+          sx={{ backgroundColor: 'white', borderRadius: '8px', width: '190%','& input': {              
+        fontWeight: 'bold',       
+        fontFamily: 'Nunito Sans', 
+      },}}
         />
       </Box>
 
@@ -287,7 +343,8 @@ export default function InventoryItem() {
         <TextField
           variant="outlined"
           size="small"
-          value="10"
+          value={quantity}
+          onClick={handleQuantityChange}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -297,7 +354,10 @@ export default function InventoryItem() {
               </InputAdornment>
             ),
           }}
-          sx={{ backgroundColor: 'white', borderRadius: '8px', width: '100%' ,fontWeight:'bold'}} 
+          sx={{ backgroundColor: 'white', borderRadius: '8px', width: '100%' ,fontWeight:'bold','& input': {              
+        fontWeight: 'bold',       
+        fontFamily: 'Nunito Sans', 
+      },}} 
         />
       </Box>
     </Box>
@@ -313,7 +373,7 @@ export default function InventoryItem() {
 
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }}>Back</Button>
+            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }} onClick={handleClose}>Back</Button>
             <Button
               variant="contained"
               color="primary"

@@ -48,7 +48,7 @@ export default function Lands() {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em><b>Casagrand</b></em>;
+              return<b>Casagrand</b>;
             }
             return selected.join(', ');
           }}
@@ -61,9 +61,7 @@ export default function Lands() {
             </IconButton>
           )}
         >
-          <MenuItem disabled value="" sx={{ height: '2rem' }}>
-            <em>Select a property...</em> 
-          </MenuItem>
+        
           {properties.map((property) => (
             <MenuItem
               key={property}

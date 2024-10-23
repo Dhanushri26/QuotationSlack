@@ -16,7 +16,8 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import Badge from '@mui/material/Badge';
 import TextField from '@mui/material/TextField';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import Bala from '../assets/person1.webp'
+import Bala from '../assets/person1.webp';
+import { Divider } from '@mui/material';
 function MenuBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -64,11 +65,13 @@ function MenuBar() {
         }}
       />
     </Box>
-    <Box sx={{ color: 'action.active',mr:'1.5rem' }}>
-      <Badge color="primary" variant="dot" >
-        <NotificationsNoneOutlinedIcon sx={{color:'white',mt:"-0.5rem",mr:"-0.3rem"}} />
+    <Box sx={{ color: 'action.active',mr:'1.5rem' ,borderRight:'1px solid lightg'}}>
+      <Badge color="primary" variant="dot" sx={{mt:1}} >
+        <NotificationsNoneOutlinedIcon sx={{color:'white',mt:"-0.5rem",mr:"-0.5rem",fontSize:'2em'}} />
       </Badge>
     </Box>
+    <Divider orientation="vertical" flexItem sx={{ borderColor: 'lightgrey', height: '40px', ml: '0.2rem',mr:'1rem',mt:'0.7rem' }} />
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip>
               <Box sx={{display:'flex'}}>
@@ -77,7 +80,7 @@ function MenuBar() {
               </IconButton>
               <Box sx={{mt:'0.5rem',ml:'0.5rem',width:'5rem'}}>
                 <Typography sx={{ textAlign: 'center',fontSize:"0.8rem" }}>Bala Ganesh</Typography>
-                <Typography sx={{ textAlign: 'center',fontSize:"0.5rem"
+                <Typography sx={{ textAlign: 'start',fontSize:"0.7rem",pl:'0.2rem'
                  }}>Super admin</Typography>
               </Box>
               <ExpandMoreOutlinedIcon sx={{fontSize:'1.5rem',mt:'0.5rem'}}/>
@@ -100,9 +103,9 @@ function MenuBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{display:'flex',padding:'1rem' ,backgroundColor:'grey',color:'white'}}>
+              <Box sx={{display:'flex',padding:'1rem' }}>
               <Avatar alt="Bala" src= {Bala} />
-              <Box sx={{mt:'0.5rem',ml:'0.5rem',width:'8rem',backgroundColor:'grey'}}>
+              <Box sx={{mt:'-0.2rem',ml:'0.5rem',width:'8rem',}}>
               <Typography sx={{ textAlign: 'center',fontSize:"1rem",ml:0.5 }}>Bala Ganesh</Typography>
               <Typography sx={{ textAlign: 'center',fontSize:"1rem",ml:0.5 }}>Super Admin</Typography>
               </Box>

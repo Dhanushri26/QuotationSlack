@@ -5,15 +5,28 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { withStyles } from '@mui/styles';
 
-export default function Secondary() {
+export default function OneTimeChange() {
   const [open, setOpen] = useState(true);
   const [revenueType, setRevenueType] = useState('Lease');
   const [componentBasedOn, setComponentBasedOn] = useState('Amount');
-
+  const[chargeable,setChargeable]=useState('Yes');
+  const [selectedValue, setSelectedValue] = useState('Primary Component');
+  const[selectedTax, setSelectedTax] = useState('GST');
   const handleClose = () => setOpen(false);
   const handleRevenueChange = (event, newType) => setRevenueType(newType);
   const handleComponentBasedChange = (event, newValue) => setComponentBasedOn(newValue);
+  const handleChargeableChange=(event,newValue)=>setChargeable(newValue);
+const[amount,setAmount]=useState('200');
 
+  const handleTaxChange=(event) =>{
+    setSelectedTax(event.target.value);
+  }
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  }
   const TextOnlyTooltip = withStyles({
     tooltip: {
       color: 'grey',
@@ -50,7 +63,9 @@ export default function Secondary() {
         borderBottom: '1px solid #e0e0e0',
         marginBottom: '0.75rem',
         marginTop:'-1.5rem',
-        marginLeft:'-0.5rem'
+        marginLeft:'-0.5rem',
+        fontFamily: 'Nunito Sans',
+        ml:-1.2
       }}>
         Pricing Table
         <IconButton onClick={handleClose}>
@@ -67,7 +82,7 @@ export default function Secondary() {
             variant="contained"
             sx={{
               backgroundColor: '#DBF0F180',
-              color: '#6d7cb3',
+              color: '#6DAFB3',
               textTransform: 'none',
               fontWeight: '500',
               borderRadius: '8px',
@@ -78,10 +93,17 @@ export default function Secondary() {
               ml:'-1rem',
               mr:'-5rem',
               paddingRight: '0.5rem',
-              width:'36rem'
+              width:'36rem',
+              boxShadow:'none',
+              fontFamily: 'Nunito Sans',
+              fontSize: '1rem',
+              '&:hover': {
+                transform:'none',
+                boxShadow:'none',
+              }
             }}
           >
-          One Time Changes
+            One Time Charges Component
             <IconButton size="small" sx={{ color: '#6d7cb3' }}>
             <TextOnlyTooltip title="Base rent or Monthly rent you can have only one primary pricing table per property">
       <div>
@@ -103,7 +125,7 @@ export default function Secondary() {
               sx={{
                 width: '50%',
                 '& .MuiToggleButton-root': {
-                  borderRadius: '5px',
+                  borderRadius: '4px',
                   padding: '7px 15px',
                   textTransform: 'none',
                   fontWeight: '500',
@@ -148,8 +170,8 @@ export default function Secondary() {
       size="small"
       fullWidth
       select
-      value="Primary Component"
-      placeholder="Select Pricing Component"
+      value={selectedValue}  
+      onChange={handleChange} 
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -161,24 +183,33 @@ export default function Secondary() {
       sx={{
         backgroundColor: 'white',
         borderRadius: '8px',
+        fontFamily: 'Nunito Sans',
         '& .MuiSelect-icon': {
           display: 'none',
+        },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
         },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
-          fontSize:'0.5rem'
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
-      <MenuItem value="Primary Component">Primary Component</MenuItem>
-      <MenuItem value="Secondary Component">Secondary</MenuItem>
-      <MenuItem value="Tertiary">Tertiary</MenuItem>
+      <MenuItem value="Primary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Primary Component
+      </MenuItem>
+      <MenuItem value="Secondary Component" sx={{ fontFamily: 'Nunito Sans' }}>
+        Secondary
+      </MenuItem>
+      <MenuItem value="Tertiary" sx={{ fontFamily: 'Nunito Sans' }}>
+        Tertiary
+      </MenuItem>
     </TextField>
   </Box>
 
-  {/* Second Box for Tax Group */}
   <Box sx={{ marginBottom: '1.5rem', ml: '-1rem', width: { xs: '100%', md: '45%' } }}>
     <Typography
       variant="body2"
@@ -187,13 +218,14 @@ export default function Secondary() {
       Tax Group For Pricing Component
     </Typography>
 
+   
     <TextField
       variant="outlined"
       size="small"
       fullWidth
       select
-      value="GST"
-      placeholder="Select Tax Group"
+      value={selectedTax}  
+      onChange={handleTaxChange} 
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -205,35 +237,46 @@ export default function Secondary() {
       sx={{
         backgroundColor: 'white',
         borderRadius: '8px',
+        fontFamily: 'Nunito Sans',
         '& .MuiSelect-icon': {
           display: 'none',
+        },
+        '& .MuiSelect-select': {
+          fontFamily: 'Nunito Sans',  
         },
         '& ::placeholder': {
           fontWeight: 'bold',
           color: 'black',
-          fontFamily:'Nunito Sans',
+          fontFamily: 'Nunito Sans',
+          fontSize: '0.5rem',
         },
       }}
     >
-      <MenuItem value="GST">GST</MenuItem>
-      <MenuItem value="VAT">VAT</MenuItem>
-      <MenuItem value="Sales Tax">Sales Tax</MenuItem>
+      <MenuItem value="GST" sx={{ fontFamily: 'Nunito Sans' }}>
+        GST
+      </MenuItem>
+      <MenuItem value="VAT" sx={{ fontFamily: 'Nunito Sans' }}>
+        VAT
+      </MenuItem>
+      <MenuItem value="Sales Tax" sx={{ fontFamily: 'Nunito Sans' }}>
+        Sales Tax
+      </MenuItem>
     </TextField>
   </Box>
 </Box>
 <Box sx={{display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
-<Box sx={{ marginBottom: '1.5rem',ml:"-0.5rem" }}>
+<Box sx={{ marginBottom: '1.5rem',ml:"-1rem" }}>
             <Typography variant="body2" sx={{ marginBottom: '0.5rem', fontWeight: 500 ,color:'grey',fontFamily:'Nunito Sans'}}>
               Chargeable
             </Typography>
             <ToggleButtonGroup
-              value={componentBasedOn}
+              value={chargeable}
               exclusive
-              onChange={handleComponentBasedChange}
+              onChange={handleChargeableChange}
               sx={{
                 width: '100%',
                 '& .MuiToggleButton-root': {
-                  borderRadius: '5x',
+                  borderRadius: '4px',
                   padding: '7px 15px',
                   textTransform: 'none',
                   fontWeight: '500',
@@ -249,8 +292,8 @@ export default function Secondary() {
                 },
               }}
             >
-              <ToggleButton value="Amount" >Yes</ToggleButton>
-              <ToggleButton value="UOM">No</ToggleButton>
+              <ToggleButton value="Yes" >Yes</ToggleButton>
+              <ToggleButton value="No">No</ToggleButton>
             </ToggleButtonGroup>
           </Box>
  <Box sx={{ marginBottom: '1.5rem',mr:"2rem" }}>
@@ -264,7 +307,7 @@ export default function Secondary() {
               sx={{
                 width: '100%',
                 '& .MuiToggleButton-root': {
-                  borderRadius: '5px',
+                  borderRadius: '4px',
                   padding: '7px 15px',
                   textTransform: 'none',
                   fontWeight: '500',
@@ -281,7 +324,7 @@ export default function Secondary() {
             >
               <ToggleButton value="Amount">Amount</ToggleButton>
               <ToggleButton value="UOM">UOM</ToggleButton>
-              <ToggleButton value="UOM">%</ToggleButton>
+              <ToggleButton value="%">%</ToggleButton>
 
             </ToggleButtonGroup>
           </Box>
@@ -295,7 +338,7 @@ export default function Secondary() {
 <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '2rem',width:'120rem',ml:'-1rem' ,flex:1 ,}}>
   <TextField
     variant="outlined"
-    size="small" width="40rem" fullWidth    value="200" 
+    size="small" width="40rem" fullWidth    value={amount} onChange={handleAmountChange}
     InputProps={{
       endAdornment: (
         <InputAdornment position="end">
@@ -313,11 +356,11 @@ export default function Secondary() {
 
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }}>Back</Button>
+            <Button variant="outlined" sx={{ width: '15%', borderRadius: '5px',border:'1px solid lightgrey',color:'black',fontWeight:'500',ml:-1 }} onClick={handleClose}>Back</Button>
             <Button
               variant="contained"
               color="primary"
-              sx={{ width: '48%', borderRadius: '3px', textTransform: 'none' }}
+              sx={{ width: '48%', borderRadius: '3px', textTransform: 'none' ,fontFamily:'Nunito Sans'}}
             >
               Create Pricing Component
             </Button>

@@ -87,7 +87,7 @@ export default function PricingTable() {
           },
         }}
       >
-        <DialogTitle sx={{ borderBottom: '1px solid lightgrey', width: '100%', pl: '3rem' }}>
+        <DialogTitle sx={{ borderBottom: '1px solid lightgrey', width: '100%', pl: '2rem',fontWeight:'bold',fontFamily:'Nunito Sans' }}>
           Pricing Table
           <IconButton
             aria-label="close"
@@ -144,7 +144,7 @@ export default function PricingTable() {
                     >
                       {formatIndex(index)}
                     </Avatar>
-                    <Typography noWrap sx={{ color: item.color }}>
+                    <Typography noWrap sx={{ color: item.color, pt:'0.2rem',fontFamily:'Nunito Sans',fontSize:'16px'}}>
                       {item.message}
                     </Typography>
                   </Stack>

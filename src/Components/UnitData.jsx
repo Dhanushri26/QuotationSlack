@@ -7,24 +7,24 @@ import Link from '@mui/material/Link';
 import LocalHotelOutlinedIcon from '@mui/icons-material/LocalHotelOutlined';
 import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-// import Dialog from '@mui/material/Dialog';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import PricingTable from '../Pages/PricingTable'; // import PricingTable
-import AddAmenities from '../Pages/AddAmenities'; // import AddAmenities component
-import AddUtilities from '../Pages/AddUtility'; // import AddUtilities component
+import PricingTable from '../Pages/PricingTable';
+import AddAmenities from '../Pages/AddAmenities';
+import AddUtilities from '../Pages/AddUtility';
 import RemoveComponent from '../Pages/RemoveComponent';
 import AddDiscount from '../Pages/AddDiscount';
+
 const CustomIconBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   boxShadow: 'none',
 });
 
-export default function RealEstateCard() {
+export default function RealEstateCard({ name, amount }) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [currentComponent, setCurrentComponent] = useState(null); 
+  const [currentComponent, setCurrentComponent] = useState(null);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,7 +32,7 @@ export default function RealEstateCard() {
 
   const handleClose = () => {
     setOpen(false);
-    setCurrentComponent(null); 
+    setCurrentComponent(null);
   };
 
   const handleDropdownOpen = (event) => {
@@ -45,19 +45,19 @@ export default function RealEstateCard() {
 
   const handleMenuItemClick = (option) => {
     if (option === 'Add Pricing Component') {
-      setCurrentComponent(<PricingTable />); 
+      setCurrentComponent(<PricingTable />);
     } else if (option === 'Add Amenities') {
       setCurrentComponent(<AddAmenities />);
     } else if (option === 'Add Utilities') {
-      setCurrentComponent(<AddUtilities />); 
+      setCurrentComponent(<AddUtilities />);
     } else if (option === 'Remove Component') {
       setCurrentComponent(<RemoveComponent />);
     } else if (option === 'Add Discount') {
-       setCurrentComponent(<AddDiscount/>)
+      setCurrentComponent(<AddDiscount />);
     }
     
-    handleClickOpen(); 
-    handleDropdownClose(); 
+    handleClickOpen();
+    handleDropdownClose();
   };
 
   return (
@@ -67,25 +67,22 @@ export default function RealEstateCard() {
         padding: 1.5,
         maxWidth: 300,
         fontFamily: 'Nunito Sans',
+        mt: -2,
       }}
     >
       <Stack direction="row" justifyContent="space-between" sx={{ ml: -3, mr: -2 }}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: 14, fontFamily: 'Nunito Sans' }}>
-          Jumeirah Estate
+        <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Nunito Sans' }}>
+          {name} 
         </Typography>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: 14, fontFamily: 'Nunito Sans' }}>
-          $ 1,200
+        <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Nunito Sans' }}>
+          ${amount} 
         </Typography>
       </Stack>
 
-      <Typography
-        variant="body2"
-        color="grey"
-        sx={{ fontSize: 12, ml: -3, mr: -1, fontFamily: 'Nunito Sans' }}
-      >
+      <Typography variant="body2" color="grey" sx={{ fontSize: 11, ml: -3, mr: -1, fontFamily: 'Nunito Sans' }}>
         Jumeirah Golf Estate • 2000 Sq.Ft
       </Typography>
-      
+
       <Stack
         direction="row"
         spacing={1}
@@ -149,38 +146,38 @@ export default function RealEstateCard() {
       >
         <MenuItem
           onClick={() => handleMenuItemClick('Add Pricing Component')}
-          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray', pt: 0 }}
+          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray', pt: 0, fontSize: '14px' }}
         >
           Add Pricing Component
         </MenuItem>
         <MenuItem
           onClick={() => handleMenuItemClick('Add Amenities')}
-          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray' }}
+          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray', fontSize: '14px' }}
         >
           Add Amenities
         </MenuItem>
         <MenuItem
           onClick={() => handleMenuItemClick('Add Utilities')}
-          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray' }}
+          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray', fontSize: '14px' }}
         >
           Add Utilities
         </MenuItem>
         <MenuItem
           onClick={() => handleMenuItemClick('Add Discount')}
-          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray'}}
+          sx={{ fontFamily: 'Nunito Sans', borderBottom: '1px solid lightgray', fontSize: '14px' }}
         >
           Add Discount
         </MenuItem>
         <MenuItem
           onClick={() => handleMenuItemClick('Remove Component')}
-          sx={{ fontFamily: 'Nunito Sans', pb: 0 }}
+          sx={{ fontFamily: 'Nunito Sans', pb: 0, fontSize: '14px' }}
         >
           Remove Component
         </MenuItem>
       </Menu>
 
-      <Box open={open} onClose={handleClose} fullWidth maxWidth="md" sx={{mt:0}}>
-        {currentComponent} 
+      <Box open={open} onClose={handleClose} fullWidth maxWidth="md" sx={{ mt: 0 }}>
+        {currentComponent}
       </Box>
     </Box>
   );
