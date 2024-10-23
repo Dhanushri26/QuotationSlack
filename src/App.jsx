@@ -1,11 +1,8 @@
-import './App.css'
+import "./App.css";
 
- import CreateQuotation from './Pages/CreateQuotation'
+import CreateQuotation from "./Pages/CreateQuotation";
 const App = () => {
-  return (
-   <CreateQuotation />
-  
-  )
-}
+  return <CreateQuotation />;
+};
 
-export default App
+export default App;
