@@ -5,8 +5,9 @@ const LeadDetailsComponent = () => {
       elevation={3}
       sx={{
         padding: 2.5,
-        maxWidth: 1000,
-        width: "20.8rem",
+        // maxWidth: 1000,
+        // width: "20.8rem",
+        width: "100%",
         height: "65.5vh",
         ml: -2,
         mt: 0,

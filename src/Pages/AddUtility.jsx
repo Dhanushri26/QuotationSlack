@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   Box,
   Dialog,
@@ -17,7 +17,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { BsStars } from "react-icons/bs";
 import { styled } from "@mui/material/styles";
-
+import { useDispatch } from 'react-redux';
+// import { setUtility } from '../redux/amenitiesSlicer';
+import { setUtilite } from "../redux/utilitiesSlicer";
 const UtilityData = [
   {
     id: 1,
@@ -88,7 +90,7 @@ const UtilityData = [
 export default function AddUtility() {
   const [open, setOpen] = useState(true);
   const [utility, setUtility] = useState(UtilityData);
-
+  const dispatch = useDispatch();
   const toggleUtility = (id) => {
     setUtility((prev) =>
       prev.map((util) =>
@@ -101,6 +103,10 @@ export default function AddUtility() {
   const totalPrice = utility.reduce((total, util) => {
     return util.selected ? total + util.price : total;
   }, 0);
+    const totalCost = totalPrice;
+  useEffect(() => {
+    dispatch(setUtilite({ totalUtility, totalCost }));
+  }, [totalUtility, totalCost, dispatch]);
 
   const handleClose = () => {
     setOpen(false);

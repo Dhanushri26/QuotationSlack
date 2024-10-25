@@ -117,7 +117,7 @@ export default function PrimaryComponent() {
           marginTop: "-1.5rem",
           fontFamily: "Nunito Sans",
           ml: -1.5,
-          width:'30rem'
+          width:'30rem',
         }}
       >
         Pricing Table
@@ -467,7 +467,10 @@ export default function PrimaryComponent() {
                   width: "25%",
                   backgroundColor: "#fff",
                   borderRadius: "8px",
-                  "&input": { fontWeight: "bold", fontFamily: "Nunito Sans" },
+                  '&input':{
+                    fontFamily:'Nunito Sans',
+                    fontWeight:'bold',
+                  }
                 }}
               />
             </Box>
@@ -504,7 +507,7 @@ export default function PrimaryComponent() {
               <Box sx={{ width: "100%" }}>
                 <BorderLinearProgress
                   variant="determinate"
-                  value={100}
+                  value={70}
                   color="red"
                 />
               </Box>

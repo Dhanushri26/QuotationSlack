@@ -7,6 +7,10 @@ import {
   Box,
 } from "@mui/material";
 import TabletAndroidIcon from "@mui/icons-material/TabletAndroid";
+import HotelOutlinedIcon from '@mui/icons-material/HotelOutlined';
+import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 const PropertyDetails = () => {
   return (
     <Card
@@ -155,8 +159,10 @@ const PropertyDetails = () => {
           color="text.primary"
           sx={{ fontFamily: "Nunito Sans", mb: 0.5 }}
         >
-          <span style={{ fontFamily: "Nunito Sans" }}>
-            2 Beds • 2 Baths • 2BHK • 2000 SqFt
+          <span style={{ fontFamily: "Nunito Sans",display:'flex',color:'gray' }}>
+        <HotelOutlinedIcon sx={{mr:0.5,color:'lightgray',fontSize:'1.3rem'}}/> 2 Beds •<BathtubOutlinedIcon sx={{mr:0.5,color:'lightgray',fontSize:'1.3rem'}}/> 2 Baths • 
+        <HomeOutlinedIcon sx={{mr:0.5,color:'lightgray',fontSize:'1.3rem'}}/>2BHK • 
+        <ImageOutlinedIcon sx={{mr:0.5,color:'lightgray',fontSize:'1.3rem'}}/>2000 SqFt
           </span>
         </Typography>
       </CardContent>

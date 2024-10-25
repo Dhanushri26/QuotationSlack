@@ -6,17 +6,27 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
+import PropTypes from "prop-types";
+import { useSelector } from 'react-redux';
 
-const data = [
-  { desc: "Total Amount", qty: 3, amount: 3600.0 },
-  { desc: "Total Discount", qty: "10%", amount: -100.0 },
-  { desc: "Total Refundable", qty: "0%", amount: 0 },
-  { desc: "Total Tax", qty: "18%", amount: 648.0 },
-];
 
-const totalAmount = 4148.0;
+// const totalAmount = 4148.0;
 
-export default function QuotationSummary() {
+export default function QuotationSummary({ totalAmount, totalQty }) {
+  const data = [
+    { desc: "Total Amount", qty: totalQty, amount: totalAmount },
+    { desc: "Total Discount", qty: "10%", amount: -100.0 },
+    { desc: "Total Refundable", qty: "0%", amount: 0 },
+    { desc: "Total Tax", qty: "18%", amount: (totalAmount * 0.18) },
+
+  ];
+    
+  const {totalAmenities,totalPrice} = useSelector((state) => state.amenities)
+ const{totalUtility , totalCost} = useSelector((state) => state.utilities)
+  console.log("Total from Aminities",totalAmenities,totalPrice);
+  console.log("Total from Utility",totalUtility,totalCost);
+
+  var QuoteAmount = totalAmount-100+(totalAmount*0.18)+totalPrice+totalCost;
   return (
     <TableContainer
       component={Paper}
@@ -174,7 +184,8 @@ export default function QuotationSummary() {
                 borderBottom: "none",
               }}
             >
-              {`$ ${totalAmount.toFixed(2)}`}
+              {/* {`$ ${totalAmount.toFixed(2)}`} */}
+              {`$ ${QuoteAmount}.00`}
             </TableCell>
           </TableRow>
         </TableBody>
@@ -182,3 +193,8 @@ export default function QuotationSummary() {
     </TableContainer>
   );
 }
+
+QuotationSummary.propTypes = {
+  totalAmount: PropTypes.number.isRequired,
+  totalQty: PropTypes.number.isRequired,
+};

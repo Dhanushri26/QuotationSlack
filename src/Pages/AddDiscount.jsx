@@ -288,10 +288,10 @@ const AddDiscount = () => {
               <Box
                 sx={{
                 position:'sticky',
-                bottom:0,
+                bottom:-10,
                 width:'100%',
                 right:0,
-                mt:8
+                mt:11
               }}>
             <Grid
               container
@@ -304,6 +304,8 @@ const AddDiscount = () => {
                 borderRadius: "5px",
                 alignItems: "center",
                 pt: "3rem",
+                pb:-2,
+                mb:-2
               }}
             >
               <Typography variant="body1" sx={{ fontFamily: "Nunito Sans" }}>
@@ -326,6 +328,7 @@ const AddDiscount = () => {
                 fontFamily: "Nunito Sans",
                 pl: 2,
                 mt: 1,
+                mb:0
               }}
             >
               Update & Save

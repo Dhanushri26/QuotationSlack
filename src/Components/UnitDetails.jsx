@@ -12,8 +12,7 @@ import QuotationSummary from "./QuotationSummary"; // Import QuotationSummary co
 export default function UnitDetails() {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
-  // State to hold item data
+  const[display,setDisplay] = useState(false);
   const [itemData, setItemData] = useState([
     {
       img: "https://www.home-designing.com/wp-content/uploads/2017/01/cowskin-hide-rug-grey-furniture-paint.jpg",
@@ -45,35 +44,45 @@ export default function UnitDetails() {
     setSelectedItem(item);
     setOpen(true);
   };
-
+//  console.log("Price:", price);
   const handleClose = () => {
     setOpen(false);
   };
 
-  // Function to handle the deletion of an item by its index
   const handleDelete = (index) => {
     const updatedData = itemData.filter((_, i) => i !== index);
     setItemData(updatedData);
   };
 
-  // Calculate totals for QuotationSummary
-  const totalAmount = itemData.reduce((total, item) => total + item.amount, 0);
-  const totalQty = itemData.length;
+  // const totalAmount = itemData.reduce((total, item) => total + item.amount, 0);
+  // const totalQty = itemData.length;
+  const totalAmount = itemData?.reduce((total, item) => total + (item?.amount || 0), 0) || 0;
+  const totalQty = itemData?.length || 0;
+  console.log(totalAmount, totalQty);
 
   return (
     <Box
       sx={{
-        width: "37%",
-        height: 400,
-        overflowY: "auto",
-        overflowX: "hidden",
-        m: 0,
-        msScrollWidth: "none",
-        scrollbarWidth: "none",
+        width: "100%",
+        height: "70vh",
+        overflowY: "scroll",
+        overflowX: "scroll",
+        ml: -0.3,
+        p:2,
+        pr:5,
+        pl:0,
+       overflow:'scroll',
         fontFamily: "Nunito Sans",
+        mt:-3,
+        display: "flex",
+        justifyContent: "center",
       }}
     >
+      <Box sx={{mr:3.5,minWidth:'26.5rem',overflow:'scroll',mscrollbarWidth: "none",scrollbarWidth: "none",ml:1.5}}>
+        <Box sx={{position:'sticky',top:'-4rem',zIndex:'1',p:1}}>
       <Typography sx={styles.title}>Unit Details</Typography>
+      </Box>
+      <Box>
       <Box sx={styles.container}>
         <ImageList sx={styles.imageListContainer} cols={2} gap={10}>
           {itemData.map((item, index) => (
@@ -87,23 +96,26 @@ export default function UnitDetails() {
               />
               <RiDeleteBinLine
                 style={styles.deleteIcon}
-                onClick={() => handleDelete(index)} // Call handleDelete with the item's index
+                onClick={() => handleDelete(index)} 
               />
               <Box sx={{ marginTop: "1rem" }}>
-                {/* Passing name and amount from the list */}
                 <RealEstateCard name={item.name} amount={item.amount} />
               </Box>
             </ImageListItem>
           ))}
         </ImageList>
       </Box>
-
+      </Box>
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <Unit item={selectedItem} />
       </Dialog>
-
-      {/* Pass data to QuotationSummary */}
+      </Box>
+      <Box>
+{/* { display && 
       <QuotationSummary totalAmount={totalAmount} totalQty={totalQty} />
+} */} {itemData.length > -1 && (
+  <QuotationSummary totalAmount={totalAmount} totalQty={totalQty} />
+)}</Box>
     </Box>
   );
 }
@@ -115,12 +127,18 @@ const styles = {
     alignItems: "center",
     fontFamily: "Nunito Sans",
     mt: "0.5rem",
+    overflow:'scroll',
+    scrollbarWidth: "none",
+    msScrollbarWidth: "none",
+    mb:8,
+  
   },
   imageListContainer: {
     width: "100%",
     maxWidth: 450,
     scrollbarWidth: "none",
     mscrollbarWidth: "none",
+    pl:1
   },
   imageListItem: {
     display: "flex",
@@ -128,7 +146,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    padding: "0.5rem 0.5rem 0.5rem 0.5rem",
+    padding: "0.5rem 0.5rem 0.5rem 0.7rem",
     borderRadius: "8px",
     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
     transition: "transform 0.3s",
@@ -151,6 +169,7 @@ const styles = {
     ml: "1rem",
     color: "grey",
     fontFamily: "Nunito Sans",
+    position:'sticky',
   },
   deleteIcon: {
     position: "absolute",

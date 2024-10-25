@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Dialog,
@@ -19,6 +19,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
 import { MdOutlineHouseboat } from "react-icons/md";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setAmenitie } from '../redux/amenitiesSlicer';
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -146,21 +149,29 @@ const amenitiesData = [
 export default function AddAmenities() {
   const [open, setOpen] = useState(true);
   const [amenities, setAmenities] = useState(amenitiesData);
-
+  const [totalAmenities, setTotalAmenities] = useState(0);
+  const dispatch = useDispatch();
   const toggleAmenity = (id) => {
-    setAmenities((prev) =>
-      prev.map((amenity) =>
-        amenity.id === id
-          ? { ...amenity, selected: !amenity.selected }
-          : amenity
-      )
-    );
+    const newAmenities = amenities.map((amenity) => {
+      if (amenity.id === id) {
+        return { ...amenity, selected: !amenity.selected };
+      }
+      return amenity;
+    });
+    const newCount = newAmenities.filter((amenity) => amenity.selected).length;
+    setAmenities(newAmenities);
+    setTotalAmenities(newCount);
   };
+  
 
-  const totalAmenities = amenities.filter((amenity) => amenity.selected).length;
+  // const totalAmenities = amenities.filter((amenity) => amenity.selected).length;
   const totalPrice = amenities.reduce((total, amenity) => {
     return amenity.selected ? total + amenity.price : total;
   }, 0);
+  // console.log(totalPrice);
+  useEffect(() => {
+    dispatch(setAmenitie({ totalAmenities, totalPrice }));
+  }, [totalAmenities, totalPrice, dispatch]);
 
   const handleClose = () => {
     setOpen(false);
@@ -369,4 +380,8 @@ export default function AddAmenities() {
       </Box>
     </Dialog>
   );
+}
+
+AddAmenities.propTypes = {
+  price: PropTypes.number.isRequired,
 }

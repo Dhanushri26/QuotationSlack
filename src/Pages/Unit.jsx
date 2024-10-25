@@ -6,7 +6,6 @@ import {
   ListItem,
   ListItemText,
   Typography,
-  Button,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -33,6 +32,7 @@ const Unit = () => {
         msScrollbarWidth: "none",
         fontFamily: "Nunito Sans",
         height: "100vh",
+        overflow:'hidden'
       }}
     >
       <Box
@@ -40,16 +40,17 @@ const Unit = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "10px 20px",
+          padding: "8px 18px",
+          pt:'10px'
         }}
       >
-        <DialogTitle>Unit Details</DialogTitle>
-        <CloseOutlined onClick={handleClose} />
+        <DialogTitle sx={{mt:-1}}>Unit Details</DialogTitle>
+        <CloseOutlined onClick={handleClose}  sx={{mr:1,mt:-1}}/>
       </Box>
       <Divider sx={{ mt: -2, mb: -1 }} />
       <DialogContent
         sx={{
-          overflowY: "auto",
+          overflowY: "hidden",
           scrollbarWidth: "none",
           msScrollbarWidth: "none",
           fontFamily: "Nunito Sans",
@@ -63,6 +64,7 @@ const Unit = () => {
               flexGrow: 1,
               backgroundColor: "#F8F9FB",
               pt: "1rem",
+              borderRadius:'4px'
             }}
           >
             <Typography variant="h6" gutterBottom sx={{ fontSize: "0.8rem" }}>
@@ -80,17 +82,17 @@ const Unit = () => {
                   divider
                   style={{ padding: "4px 16px", fontSize: "10px" }}
                 >
-                  <ListItemText primary={item} style={{ fontSize: "10px" }} />{" "}
-                  {/* Reduce font size */}
+                  <ListItemText secondary={item} style={{ fontSize: "10px",fontFamily:'Nunito Sans' }} sx={{fontFamily:'Nunito Sans '}} />
                   <ListItemText
-                    primary="$1,000"
-                    style={{ textAlign: "right", fontSize: "10px" }}
+                    secondary="$1,000"
+                    style={{ textAlign: "right", fontSize: "10px" ,fontFamily:'Nunito Sans',fontWeight:'bold'} }
                   />{" "}
-                  {/* Reduce font size */}
                 </ListItem>
+
               ))}
+              
             </List>
-            <Box sx={{ height: "9rem", width: "100%" }}></Box>
+            <Box sx={{ height: "14.5rem", width: "100%" }}></Box>
             <Grid
               container
               justifyContent="space-between"
@@ -104,17 +106,11 @@ const Unit = () => {
                 mt: "5rem",
               }}
             >
-              <Typography variant="body1">Final Total</Typography>
-              <Typography variant="h6" sx={{ mr: "0.3rem" }}>
+              <Typography variant="body1" sx={{fontFamily:'Nunito Sans',fontSize:'14px',ml:-2.5,fontWeight:'bold'}}>Final Total</Typography>
+              <Typography variant="h6" sx={{ mr: "0.3rem",fontFamily:'Nunito Sans'  }}>
                 $1,200
               </Typography>
             </Grid>
-
-            <Divider style={{ margin: "10px 0" }} />
-
-            <Button variant="contained" color="primary" sx={{ width: "100%" }}>
-              Update & Save
-            </Button>
           </Box>
         </Box>
       </DialogContent>

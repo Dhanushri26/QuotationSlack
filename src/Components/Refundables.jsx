@@ -119,6 +119,9 @@ export default function Refundables() {
               fontFamily: "Nunito Sans",
               fontSize: "1rem",
               boxShadow: "none",
+              '&:hover': {
+              boxShadow:'none'
+              }
             }}
           >
             Refundable Price Component
